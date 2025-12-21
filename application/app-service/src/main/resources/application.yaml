@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: "back-theonova-core"
+server:
+  port: 8080

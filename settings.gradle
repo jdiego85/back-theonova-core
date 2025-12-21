@@ -1,14 +1,24 @@
-rootProject.name = 'back-theonova-core'
 pluginManagement {
     repositories {
-        mavenCentral()
+        gradlePluginPortal()
     }
 }
-include(":api-rest")
-include(":jpa-repository")
-include(":usecase")
-include(":model")
-project(":api-rest").projectDir = file ("./infraestructure/entry-points/api-rest")
-project(":jpa-repository").projectDir = file ("./infraestructure/driven-adapters/jpa-repository ")
-project(":model").projectDir = file ("./domain/model")
-project(":usecase").projectDir = file ("./domain/usecase")
+
+rootProject.name = 'back-theonova-core'
+
+include(":app-service",
+        ":api-rest",
+        ":jpa-repository",
+        ":http-client",
+        ":usecase",
+        ":model")
+
+project(":api-rest").projectDir = file("./infraestructure/entry-points/api-rest")
+
+project(":http-client").projectDir = file("./infraestructure/driven-adapters/http-client")
+project(":jpa-repository").projectDir = file("./infraestructure/driven-adapters/jpa-repository")
+
+project(":model").projectDir = file("./domain/model")
+project(":usecase").projectDir = file("./domain/usecase")
+
+project(":app-service").projectDir = file("./application/app-service")
