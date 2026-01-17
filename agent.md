@@ -11,20 +11,28 @@ Implementar un ecommerce robusto (hexagonal + clean code) donde:
 
 ---
 
-# 0) Convenciones de arquitectura (mínimas)
+# 0) Convenciones de arquitectura (Scaffold de Bancolombia)
 
-* **domain/model**: entidades de negocio (inmutables o con invariantes claras).
-* **application/usecase**: casos de uso (orquestación + transacciones).
-* **application/port/in**: interfaces de casos de uso (lo que llama el handler).
-* **application/port/out**: interfaces de persistencia (lo que implementa el adapter).
-* **infrastructure/adapter/out/mysql**: repositorios MySQL (JDBC/JPA según stack).
-* **infrastructure/entrypoint/http**:
-
-    * `*Route` (RouterFunction)
-    * `*Handler` (validación/parseo/respuesta)
-    * Request (DTOs de entrada)
-    * Response (DTOs de salida)
-
+* **domain/model**: El núcleo sagrado.
+  * `*Entidades` Objetos de negocio puros (POJOs).
+  * `*Gateways` Aquí van las Interfaces (Puertos de Salida).
+  * Diferencia clave: En este scaffold, las interfaces de repositorios viven dentro del model, no en application.
+* **domain/usecase:** La orquestación.
+  * Aquí vive la Lógica de Negocio.
+  * Las clases aquí (ej. CrearUsuarioUseCase) implementan la lógica y llaman a las interfaces definidas en model/gateways.
+* **infrastructure/entry-points**: La entrada (Driving Adapter).
+  * api-rest: Aquí vive la capa web funcional.
+    * Routes (RouterFunction): Definen qué URL va a qué método (el mapeo). Reemplazan a las anotaciones @GetMapping, @PostMapping.
+    * Handlers: Contienen la lógica de orquestación de la petición (validar request $\to$ llamar caso de uso $\to$ crear response). Reemplazan a los métodos dentro de un @RestController.
+  * Convierte DTOs (Request) $\to$ llama al UseCase $\to$ devuelve DTOs (Response).
+* **infrastructure/driven-adapters**: La salida (Driven Adapter).
+  * jpa-repository / jpa-repository: Implementación de base de datos.
+  * http-client: Consumo de APIs externas.
+  * Estas clases implementan las interfaces que definiste en domain/model/gateways.
+* **applications/app-service:** El arranque
+  * Configuración (Beans): Aquí unes todo. Creas los @Bean de tus casos de uso inyectando los repositorios.
+  * MainApplication: La clase que arranca Spring Boot.
+      
 ---
 
 # 1) Modelo Entidad–Relación (ER) y reglas de datos (PRIORIDAD 1)
