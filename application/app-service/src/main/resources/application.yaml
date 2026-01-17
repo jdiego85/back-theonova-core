@@ -1,6 +1,16 @@
 spring:
   application:
     name: "back-theonova-core"
+  datasource:
+    hikari:
+      auto-commit: true
+      connection-timeout: 30000
+      idle-timeout: 300000
+      maximum-pool-size: 50
+      minimum-idle: 8
+      max-lifetime: 900000
+      pool-name: PoolConnection-TheonovaProject
+      connection-test-query: 1
 server:
   port: 8080
 management:
@@ -12,3 +22,4 @@ management:
   endpoint:
     health:
       show-details: always
+
