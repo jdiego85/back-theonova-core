@@ -1,4 +1,7 @@
 package com.theonova.repository.procurement;
 
-public interface SupplierRepository {
+import com.theonova.repository.RepositoryEngine;
+import com.theonova.tables.procurement.SupplierTable;
+
+public interface SupplierRepository extends RepositoryEngine<SupplierTable,Long> {
 }
