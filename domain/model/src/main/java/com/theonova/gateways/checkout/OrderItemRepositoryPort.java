@@ -1,17 +1,11 @@
 package com.theonova.gateways.checkout;
 
 import com.theonova.entities.checkout.OrderItem;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.List;
-import java.util.Optional;
 
-public interface OrderItemRepositoryPort {
-    OrderItem save(OrderItem orderItem);
-
-    Optional<OrderItem> findById(long id);
-
+public interface OrderItemRepositoryPort extends ServiceManager<OrderItem,Long> {
     List<OrderItem> findByOrderId(long orderId);
-
     List<OrderItem> findByProductId(long productId);
-
-    void deleteById(long id);
 }

@@ -1,17 +1,10 @@
 package com.theonova.gateways.catalog;
 
 import com.theonova.entities.catalog.Category;
-import java.util.List;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.Optional;
 
-public interface CategoryRepositoryPort {
-    Category save(Category category);
-
-    Optional<Category> findById(long id);
-
+public interface CategoryRepositoryPort extends ServiceManager<Category,Long> {
     Optional<Category> findBySlug(String slug);
-
-    List<Category> findAll();
-
-    void deleteById(long id);
 }

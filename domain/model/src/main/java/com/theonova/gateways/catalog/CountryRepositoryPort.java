@@ -1,17 +1,10 @@
 package com.theonova.gateways.catalog;
 
 import com.theonova.entities.catalog.Country;
-import java.util.List;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.Optional;
 
-public interface CountryRepositoryPort {
-    Country save(Country country);
-
-    Optional<Country> findById(long id);
-
+public interface CountryRepositoryPort extends ServiceManager<Country,Long> {
     Optional<Country> findByIso2(String iso2);
-
-    List<Country> findAll();
-
-    void deleteById(long id);
 }

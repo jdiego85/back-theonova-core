@@ -1,15 +1,10 @@
 package com.theonova.gateways.checkout;
 
 import com.theonova.entities.checkout.Notification;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.List;
-import java.util.Optional;
 
-public interface NotificationRepositoryPort {
-    Notification save(Notification notification);
-
-    Optional<Notification> findById(long id);
-
+public interface NotificationRepositoryPort extends ServiceManager<Notification,Long> {
     List<Notification> findByUserId(long userId);
-
-    List<Notification> findAll();
 }

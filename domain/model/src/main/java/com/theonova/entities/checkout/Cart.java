@@ -1,5 +1,7 @@
 package com.theonova.entities.checkout;
 
+import com.theonova.enums.CartStatus;
+
 import java.time.Instant;
 
 public record Cart(

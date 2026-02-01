@@ -1,5 +1,7 @@
 package com.theonova.entities.inventory;
 
+import com.theonova.enums.ReservationStatus;
+
 import java.time.Instant;
 
 public record StockReservation(

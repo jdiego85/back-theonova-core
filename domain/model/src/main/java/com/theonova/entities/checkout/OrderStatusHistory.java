@@ -1,5 +1,7 @@
 package com.theonova.entities.checkout;
 
+import com.theonova.enums.OrderStatus;
+
 import java.time.Instant;
 
 public record OrderStatusHistory(

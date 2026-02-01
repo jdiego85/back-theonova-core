@@ -1,5 +1,9 @@
 package com.theonova.entities.checkout;
 
+import com.theonova.enums.NotificationChannel;
+import com.theonova.enums.NotificationStatus;
+import com.theonova.enums.NotificationType;
+
 import java.time.Instant;
 import java.util.Map;
 

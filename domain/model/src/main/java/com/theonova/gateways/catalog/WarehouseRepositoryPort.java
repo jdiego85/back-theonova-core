@@ -1,17 +1,10 @@
 package com.theonova.gateways.catalog;
 
 import com.theonova.entities.catalog.Warehouse;
-import java.util.List;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.Optional;
 
-public interface WarehouseRepositoryPort {
-    Warehouse save(Warehouse warehouse);
-
-    Optional<Warehouse> findById(long id);
-
+public interface WarehouseRepositoryPort extends ServiceManager<Warehouse,Long> {
     Optional<Warehouse> findDefaultByCountryIso2(String iso2);
-
-    List<Warehouse> findAll();
-
-    void deleteById(long id);
 }

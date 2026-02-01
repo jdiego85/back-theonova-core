@@ -1,5 +1,8 @@
 package com.theonova.entities.inventory;
 
+import com.theonova.enums.InventoryMovementType;
+import com.theonova.enums.InventoryReferenceType;
+
 import java.time.Instant;
 
 public record InventoryMovement(

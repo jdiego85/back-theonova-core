@@ -1,19 +1,11 @@
 package com.theonova.gateways.inventory;
 
 import com.theonova.entities.inventory.InventoryBalance;
-import java.util.List;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.Optional;
 
-public interface InventoryBalanceRepositoryPort {
-    InventoryBalance save(InventoryBalance inventoryBalance);
-
-    Optional<InventoryBalance> findById(long id);
-
+public interface InventoryBalanceRepositoryPort extends ServiceManager<InventoryBalance,Long> {
     Optional<InventoryBalance> findByProductAndWarehouse(long productId, long warehouseId);
-
     Optional<InventoryBalance> lockByProductAndWarehouse(long productId, long warehouseId);
-
-    List<InventoryBalance> findAll();
-
-    void deleteById(long id);
 }

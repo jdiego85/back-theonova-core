@@ -1,17 +1,11 @@
 package com.theonova.gateways.catalog;
 
 import com.theonova.entities.catalog.Product;
-import java.util.List;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.Optional;
 
-public interface ProductRepositoryPort {
-    Product save(Product product);
-
-    Optional<Product> findById(long id);
-
+public interface ProductRepositoryPort extends ServiceManager<Product,Long> {
     Optional<Product> findBySku(String sku);
 
-    List<Product> findAll();
-
-    void deleteById(long id);
 }

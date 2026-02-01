@@ -1,13 +1,10 @@
 package com.theonova.gateways.checkout;
 
 import com.theonova.entities.checkout.OrderStatusHistory;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.List;
-import java.util.Optional;
 
-public interface OrderStatusHistoryRepositoryPort {
-    OrderStatusHistory save(OrderStatusHistory orderStatusHistory);
-
-    Optional<OrderStatusHistory> findById(long id);
-
+public interface OrderStatusHistoryRepositoryPort extends ServiceManager<OrderStatusHistory,Long> {
     List<OrderStatusHistory> findByOrderId(long orderId);
 }

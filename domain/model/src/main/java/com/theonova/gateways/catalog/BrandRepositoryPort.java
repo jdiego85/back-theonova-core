@@ -1,17 +1,11 @@
 package com.theonova.gateways.catalog;
 
 import com.theonova.entities.catalog.Brand;
-import java.util.List;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.Optional;
 
-public interface BrandRepositoryPort {
-    Brand save(Brand brand);
-
-    Optional<Brand> findById(long id);
-
+public interface BrandRepositoryPort extends ServiceManager<Brand,Long> {
     Optional<Brand> findByName(String name);
 
-    List<Brand> findAll();
-
-    void deleteById(long id);
 }

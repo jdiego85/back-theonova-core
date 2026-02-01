@@ -1,17 +1,10 @@
 package com.theonova.gateways.inventory;
 
 import com.theonova.entities.inventory.ReorderSetting;
-import java.util.List;
+import com.theonova.gateways.ServiceManager;
+
 import java.util.Optional;
 
-public interface ReorderSettingsRepositoryPort {
-    ReorderSetting save(ReorderSetting reorderSetting);
-
-    Optional<ReorderSetting> findById(long id);
-
+public interface ReorderSettingsRepositoryPort extends ServiceManager<ReorderSetting,Long> {
     Optional<ReorderSetting> findByProductAndWarehouse(long productId, long warehouseId);
-
-    List<ReorderSetting> findAll();
-
-    void deleteById(long id);
 }

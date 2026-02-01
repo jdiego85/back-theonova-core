@@ -1,5 +1,7 @@
 package com.theonova.entities.catalog;
 
+import com.theonova.enums.AttributeDataType;
+
 import java.time.Instant;
 
 public record Attribute(
