@@ -1,11 +1,7 @@
 package com.theonova.tables.catalog;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import lombok.Getter;
@@ -44,6 +40,16 @@ public class ProductAttributeValueTable {
     @Column(name = "value_boolean")
     @Comment("Boolean value")
     private Boolean valueBoolean;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Product reference")
+    private ProductTable product;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "attribute_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Attribute reference")
+    private AttributeTable attribute;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

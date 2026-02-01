@@ -1,11 +1,7 @@
 package com.theonova.tables.catalog;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,6 +35,11 @@ public class CategoryTable {
     @Column(name = "is_active", nullable = false)
     @Comment("Active flag")
     private boolean active;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id", insertable = false, updatable = false)
+    @Comment("Parent category reference")
+    private CategoryTable parent;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

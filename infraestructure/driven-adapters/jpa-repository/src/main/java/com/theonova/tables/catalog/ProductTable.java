@@ -1,11 +1,7 @@
 package com.theonova.tables.catalog;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import lombok.Getter;
@@ -60,6 +56,11 @@ public class ProductTable {
     @Column(name = "lead_time_days", nullable = false)
     @Comment("Lead time in days")
     private int leadTimeDays;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id", insertable = false, updatable = false)
+    @Comment("Brand reference")
+    private BrandTable brand;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

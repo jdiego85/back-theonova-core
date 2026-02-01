@@ -1,8 +1,6 @@
 package com.theonova.tables.catalog;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,4 +13,14 @@ import lombok.Setter;
 public class ProductCategoryTable {
     @EmbeddedId
     private ProductCategoryId id;
+
+    @MapsId("productId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    private ProductTable product;
+
+    @MapsId("categoryId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private CategoryTable category;
 }

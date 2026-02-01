@@ -1,11 +1,9 @@
 package com.theonova.tables.checkout;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.theonova.tables.catalog.ProductTable;
+import com.theonova.tables.catalog.WarehouseTable;
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,6 +37,21 @@ public class CartItemTable {
     @Column(name = "quantity", nullable = false)
     @Comment("Item quantity")
     private int quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Cart reference")
+    private CartTable cart;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Product reference")
+    private ProductTable product;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "warehouse_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Warehouse reference")
+    private WarehouseTable warehouse;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

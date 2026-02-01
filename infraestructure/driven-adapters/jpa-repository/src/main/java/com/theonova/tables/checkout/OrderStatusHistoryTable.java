@@ -1,13 +1,7 @@
 package com.theonova.tables.checkout;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +37,11 @@ public class OrderStatusHistoryTable {
     @Column(name = "changed_by")
     @Comment("User who changed the status")
     private Long changedBy;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Order reference")
+    private OrderTable order;
 
     @Column(name = "changed_at", nullable = false)
     @Comment("Change timestamp")

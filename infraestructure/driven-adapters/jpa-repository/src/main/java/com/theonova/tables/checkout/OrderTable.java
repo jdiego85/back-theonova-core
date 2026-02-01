@@ -1,13 +1,8 @@
 package com.theonova.tables.checkout;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.theonova.tables.catalog.WarehouseTable;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import lombok.Getter;
@@ -80,6 +75,11 @@ public class OrderTable {
     @Column(name = "notes", length = 255)
     @Comment("Order notes")
     private String notes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "warehouse_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Warehouse reference")
+    private WarehouseTable warehouse;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

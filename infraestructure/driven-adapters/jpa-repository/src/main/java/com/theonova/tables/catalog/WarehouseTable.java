@@ -1,11 +1,7 @@
 package com.theonova.tables.catalog;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,6 +47,11 @@ public class WarehouseTable {
     @Column(name = "is_default", nullable = false)
     @Comment("Default warehouse flag")
     private boolean defaultWarehouse;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id", nullable = false, insertable = false, updatable = false)
+    @Comment("Country reference")
+    private CountryTable country;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")
