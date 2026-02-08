@@ -37,9 +37,10 @@ public class ProductTable {
     @Comment("Unit price")
     private BigDecimal price;
 
-    @Column(name = "brand_id")
-    @Comment("Brand identifier")
-    private Long brandId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id",nullable = false)
+    @Comment("Brand reference")
+    private BrandTable brand;
 
     @Column(name = "is_active", nullable = false)
     @Comment("Active flag")
@@ -56,11 +57,6 @@ public class ProductTable {
     @Column(name = "lead_time_days", nullable = false)
     @Comment("Lead time in days")
     private int leadTimeDays;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "brand_id", insertable = false, updatable = false)
-    @Comment("Brand reference")
-    private BrandTable brand;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

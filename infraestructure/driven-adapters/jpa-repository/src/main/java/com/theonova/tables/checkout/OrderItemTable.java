@@ -22,13 +22,15 @@ public class OrderItemTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "order_id", nullable = false)
-    @Comment("Order identifier")
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false)
+    @Comment("Order reference")
+    private OrderTable order;
 
-    @Column(name = "product_id", nullable = false)
-    @Comment("Product identifier")
-    private Long productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    @Comment("Product reference")
+    private ProductTable product;
 
     @Column(name = "quantity", nullable = false)
     @Comment("Item quantity")
@@ -41,16 +43,6 @@ public class OrderItemTable {
     @Column(name = "line_total", nullable = false, precision = 12, scale = 2)
     @Comment("Line total")
     private BigDecimal lineTotal;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Order reference")
-    private OrderTable order;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Product reference")
-    private ProductTable product;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

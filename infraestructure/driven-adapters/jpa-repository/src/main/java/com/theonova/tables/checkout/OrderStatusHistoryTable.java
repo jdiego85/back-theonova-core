@@ -20,9 +20,10 @@ public class OrderStatusHistoryTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "order_id", nullable = false)
-    @Comment("Order identifier")
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false)
+    @Comment("Order reference")
+    private OrderTable order;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "from_status", length = 20)
@@ -37,11 +38,6 @@ public class OrderStatusHistoryTable {
     @Column(name = "changed_by")
     @Comment("User who changed the status")
     private Long changedBy;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Order reference")
-    private OrderTable order;
 
     @Column(name = "changed_at", nullable = false)
     @Comment("Change timestamp")

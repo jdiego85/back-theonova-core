@@ -22,13 +22,15 @@ public class InventoryBalanceTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "product_id", nullable = false)
-    @Comment("Product identifier")
-    private Long productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    @Comment("Product reference")
+    private ProductTable product;
 
-    @Column(name = "warehouse_id", nullable = false)
-    @Comment("Warehouse identifier")
-    private Long warehouseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "warehouse_id", nullable = false)
+    @Comment("Warehouse reference")
+    private WarehouseTable warehouse;
 
     @Column(name = "on_hand", nullable = false)
     @Comment("On-hand quantity")
@@ -37,16 +39,6 @@ public class InventoryBalanceTable {
     @Column(name = "reserved", nullable = false)
     @Comment("Reserved quantity")
     private int reserved;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Product reference")
-    private ProductTable product;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "warehouse_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Warehouse reference")
-    private WarehouseTable warehouse;
 
     @Column(name = "updated_at", nullable = false)
     @Comment("Last update timestamp")

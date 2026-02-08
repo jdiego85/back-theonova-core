@@ -30,9 +30,11 @@ public class OrderTable {
     @Comment("User identifier")
     private Long userId;
 
-    @Column(name = "warehouse_id", nullable = false)
-    @Comment("Warehouse identifier")
-    private Long warehouseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "warehouse_id", nullable = false)
+    @Comment("Warehouse reference")
+    private WarehouseTable warehouse;
+
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
@@ -75,11 +77,6 @@ public class OrderTable {
     @Column(name = "notes", length = 255)
     @Comment("Order notes")
     private String notes;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "warehouse_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Warehouse reference")
-    private WarehouseTable warehouse;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

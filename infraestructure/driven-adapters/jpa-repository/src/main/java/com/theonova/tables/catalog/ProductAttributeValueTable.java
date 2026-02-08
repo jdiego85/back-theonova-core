@@ -21,13 +21,15 @@ public class ProductAttributeValueTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "product_id", nullable = false)
-    @Comment("Product identifier")
-    private Long productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id",nullable = false)
+    @Comment("Product reference")
+    private ProductTable product;
 
-    @Column(name = "attribute_id", nullable = false)
-    @Comment("Attribute identifier")
-    private Long attributeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "attribute_id",nullable = false)
+    @Comment("Attribute reference")
+    private AttributeTable attribute;
 
     @Column(name = "value_string", length = 255)
     @Comment("String value")
@@ -40,16 +42,6 @@ public class ProductAttributeValueTable {
     @Column(name = "value_boolean")
     @Comment("Boolean value")
     private Boolean valueBoolean;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Product reference")
-    private ProductTable product;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attribute_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Attribute reference")
-    private AttributeTable attribute;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

@@ -1,11 +1,9 @@
 package com.theonova.tables.inventory;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.theonova.tables.catalog.ProductTable;
+import com.theonova.tables.catalog.WarehouseTable;
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,13 +22,16 @@ public class ReorderSettingTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "product_id", nullable = false)
-    @Comment("Product identifier")
-    private Long productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    @Comment("Product reference")
+    private ProductTable product;
 
-    @Column(name = "warehouse_id", nullable = false)
-    @Comment("Warehouse identifier")
-    private Long warehouseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "warehouse_id", nullable = false)
+    @Comment("Warehouse reference")
+    private WarehouseTable warehouse;
+
 
     @Column(name = "threshold", nullable = false)
     @Comment("Reorder threshold")

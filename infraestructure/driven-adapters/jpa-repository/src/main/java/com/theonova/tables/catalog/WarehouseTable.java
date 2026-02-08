@@ -20,9 +20,10 @@ public class WarehouseTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "country_id", nullable = false)
-    @Comment("Country identifier")
-    private Long countryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id",nullable = false)
+    @Comment("Country reference")
+    private CountryTable country;
 
     @Column(name = "code", nullable = false, length = 30)
     @Comment("Warehouse code")
@@ -47,11 +48,6 @@ public class WarehouseTable {
     @Column(name = "is_default", nullable = false)
     @Comment("Default warehouse flag")
     private boolean defaultWarehouse;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "country_id", nullable = false, insertable = false, updatable = false)
-    @Comment("Country reference")
-    private CountryTable country;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

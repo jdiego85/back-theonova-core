@@ -20,9 +20,10 @@ public class CategoryTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "parent_id")
-    @Comment("Parent category identifier")
-    private Long parentId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    @Comment("Parent category reference")
+    private CategoryTable parent;
 
     @Column(name = "name", nullable = false, length = 120)
     @Comment("Category name")
@@ -35,11 +36,6 @@ public class CategoryTable {
     @Column(name = "is_active", nullable = false)
     @Comment("Active flag")
     private boolean active;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id", insertable = false, updatable = false)
-    @Comment("Parent category reference")
-    private CategoryTable parent;
 
     @Column(name = "created_at", nullable = false)
     @Comment("Creation timestamp")

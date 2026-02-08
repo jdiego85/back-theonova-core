@@ -1,11 +1,8 @@
 package com.theonova.tables.procurement;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.theonova.tables.catalog.ProductTable;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import lombok.Getter;
@@ -25,13 +22,15 @@ public class PurchaseOrderItemTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "purchase_order_id", nullable = false)
-    @Comment("Purchase order identifier")
-    private Long purchaseOrderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "purchase_order_id", nullable = false)
+    @Comment("Purchase order reference")
+    private PurchaseOrderTable purchaseOrder;
 
-    @Column(name = "product_id", nullable = false)
-    @Comment("Product identifier")
-    private Long productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    @Comment("Product reference")
+    private ProductTable product;
 
     @Column(name = "quantity_ordered", nullable = false)
     @Comment("Ordered quantity")

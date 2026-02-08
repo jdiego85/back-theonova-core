@@ -1,13 +1,8 @@
 package com.theonova.tables.procurement;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.theonova.tables.catalog.WarehouseTable;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -28,13 +23,15 @@ public class PurchaseOrderTable {
     @Comment("Primary key")
     private Long id;
 
-    @Column(name = "supplier_id", nullable = false)
-    @Comment("Supplier identifier")
-    private Long supplierId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supplier_id", nullable = false)
+    @Comment("Supplier reference")
+    private SupplierTable supplier;
 
-    @Column(name = "warehouse_id", nullable = false)
-    @Comment("Warehouse identifier")
-    private Long warehouseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "warehouse_id", nullable = false)
+    @Comment("Warehouse reference")
+    private WarehouseTable warehouse;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
