@@ -1,5 +1,6 @@
 package com.theonova.tables.catalog;
 
+import com.theonova.enums.AttributeDataType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;

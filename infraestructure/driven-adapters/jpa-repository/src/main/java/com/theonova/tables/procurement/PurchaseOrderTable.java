@@ -1,5 +1,6 @@
 package com.theonova.tables.procurement;
 
+import com.theonova.enums.PurchaseOrderStatus;
 import com.theonova.tables.catalog.WarehouseTable;
 import jakarta.persistence.*;
 

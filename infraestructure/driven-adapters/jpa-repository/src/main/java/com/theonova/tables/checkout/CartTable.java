@@ -1,5 +1,6 @@
 package com.theonova.tables.checkout;
 
+import com.theonova.enums.CartStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;

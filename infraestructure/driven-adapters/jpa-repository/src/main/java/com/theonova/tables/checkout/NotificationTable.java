@@ -1,5 +1,8 @@
 package com.theonova.tables.checkout;
 
+import com.theonova.enums.NotificationChannel;
+import com.theonova.enums.NotificationStatus;
+import com.theonova.enums.NotificationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;

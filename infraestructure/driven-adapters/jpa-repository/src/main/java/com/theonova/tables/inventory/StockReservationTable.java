@@ -1,7 +1,10 @@
 package com.theonova.tables.inventory;
 
+import com.theonova.enums.ReservationStatus;
 import com.theonova.tables.catalog.ProductTable;
 import com.theonova.tables.catalog.WarehouseTable;
+import com.theonova.tables.checkout.CartTable;
+import com.theonova.tables.checkout.OrderTable;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -33,13 +36,15 @@ public class StockReservationTable {
     @Comment("Warehouse reference")
     private WarehouseTable warehouse;
 
-    @Column(name = "order_id")
-    @Comment("Order identifier")
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    @Comment("Order reference")
+    private OrderTable order;
 
-    @Column(name = "cart_id")
-    @Comment("Cart identifier")
-    private Long cartId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    @Comment("Cart reference")
+    private CartTable cart;
 
     @Column(name = "quantity", nullable = false)
     @Comment("Reserved quantity")
@@ -48,7 +53,7 @@ public class StockReservationTable {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
     @Comment("Reservation status")
-    private StockReservationStatus status;
+    private ReservationStatus status;
 
     @Column(name = "expires_at", nullable = false)
     @Comment("Expiration timestamp")

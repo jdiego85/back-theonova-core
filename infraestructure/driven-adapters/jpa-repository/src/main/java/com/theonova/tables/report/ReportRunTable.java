@@ -1,5 +1,7 @@
 package com.theonova.tables.report;
 
+import com.theonova.enums.ReportStatus;
+import com.theonova.enums.ReportType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;

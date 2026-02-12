@@ -1,5 +1,6 @@
 package com.theonova.tables.checkout;
 
+import com.theonova.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import java.time.Instant;

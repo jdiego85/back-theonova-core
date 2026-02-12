@@ -1,5 +1,7 @@
 package com.theonova.tables.inventory;
 
+import com.theonova.enums.InventoryMovementType;
+import com.theonova.enums.InventoryReferenceType;
 import com.theonova.tables.catalog.ProductTable;
 import com.theonova.tables.catalog.WarehouseTable;
 import jakarta.persistence.*;
