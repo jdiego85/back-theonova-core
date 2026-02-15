@@ -1,13 +1,11 @@
-package com.theonova.entities.catalog;
+package com.theonova.response.catalog;
 
 import lombok.Builder;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 @Builder
-public record Product(
-        long id,
+public record ProductResponse(
         String sku,
         String name,
         String description,
@@ -16,8 +14,6 @@ public record Product(
         boolean active,//is_active
         int minStock,
         int reorderPoint,
-        int leadTimeDays,
-        Instant createdAt,
-        Instant updatedAt
+        int leadTimeDays
 ) {
 }

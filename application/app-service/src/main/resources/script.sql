@@ -53,8 +53,8 @@ CREATE TABLE categories (
                                 FOREIGN KEY (parent_id) REFERENCES categories(id)
 ) ENGINE=InnoDB;
 
--- Nota: users no la defino aquí porque suele venir de tu sistema de auth.
--- Si necesitas users, la agregamos. Por ahora referencio user_id como BIGINT.
+-- Nota: users no la defino aquí porque viene del sistema de auth.
+-- Por ahora referencio user_id como BIGINT.
 
 CREATE TABLE products (
                           id            BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
