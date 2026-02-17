@@ -8,7 +8,6 @@ public class CountryMapper {
     public static Country requestToDomain(CountryRequest countryRequest){
         return Country.builder()
                 .name(countryRequest.name())
-                .iso2(countryRequest.iso2())
                 .build();
     }
 

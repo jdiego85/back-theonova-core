@@ -1,7 +1,7 @@
 package com.theonova.repository.inventory;
 
 import com.theonova.repository.RepositoryEngine;
-import com.theonova.tables.inventory.StockReservationTable;
+import com.theonova.tables.inventory.StockReservationEntity;
 
-public interface StockReservationRepository extends RepositoryEngine<StockReservationTable,Long> {
+public interface StockReservationRepository extends RepositoryEngine<StockReservationEntity,Long> {
 }

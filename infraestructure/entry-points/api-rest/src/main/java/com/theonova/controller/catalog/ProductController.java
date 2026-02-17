@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private static ProductUseCase productUseCase;
+    private final ProductUseCase productUseCase;
+    private final ProductMapper productMapper;
 
     public ResponseEntity<ProductResponse> create(@RequestBody ProductRequest productRequest) {
-        Product productToDomain = ProductMapper.requestToDomain(productRequest);
+        Product productToDomain = productMapper.mapperRequestToDomain(productRequest);
         Product productToResponse = productUseCase.execute(productToDomain);
-        ProductResponse productResponse = ProductMapper.domainToResponse(productToResponse);
+        ProductResponse productResponse = productMapper.mapperDomainToResponse(productToResponse);
         return ResponseEntity.ok(productResponse);
 
     }

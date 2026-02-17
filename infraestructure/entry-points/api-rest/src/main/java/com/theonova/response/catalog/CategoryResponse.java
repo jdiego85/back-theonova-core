@@ -1,11 +1,11 @@
 package com.theonova.response.catalog;
 
+import com.theonova.exceptions.dto.CommonDataOutput;
 import lombok.Builder;
 
 @Builder
-public record CategoryResponse(
-        Long parentId,
-        String name,
-        String slug
-) {
+public class CategoryResponse extends CommonDataOutput {
+        Long parentId;
+        String name;
+        String slug;
 }

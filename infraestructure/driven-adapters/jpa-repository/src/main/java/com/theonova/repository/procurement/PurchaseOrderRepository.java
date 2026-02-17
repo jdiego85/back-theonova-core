@@ -1,7 +1,7 @@
 package com.theonova.repository.procurement;
 
 import com.theonova.repository.RepositoryEngine;
-import com.theonova.tables.procurement.PurchaseOrderTable;
+import com.theonova.tables.procurement.PurchaseOrderEntity;
 
-public interface PurchaseOrderRepository extends RepositoryEngine<PurchaseOrderTable,Long> {
+public interface PurchaseOrderRepository extends RepositoryEngine<PurchaseOrderEntity,Long> {
 }

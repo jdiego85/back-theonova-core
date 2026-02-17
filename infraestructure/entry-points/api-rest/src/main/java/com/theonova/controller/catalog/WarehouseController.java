@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class WarehouseController {
 
-    private static WarehouseUseCase warehouseUseCase;
+    private final WarehouseUseCase warehouseUseCase;
+    private final WarehouseMapper warehouseMapper;
 
     @PostMapping("/create")
     public ResponseEntity<WarehouseResponse>  create (@RequestBody WarehouseRequest warehouseRequest){
-        Warehouse warehousetoDomain = WarehouseMapper.requestToDomain(warehouseRequest);
+        Warehouse warehousetoDomain = warehouseMapper.mapperRequestToDomain(warehouseRequest);
         Warehouse warehouseToResponse = warehouseUseCase.execute(warehousetoDomain);
-        WarehouseResponse warehouseResponse = WarehouseMapper.domainToResponse(warehouseToResponse);
+        WarehouseResponse warehouseResponse = warehouseMapper.mapperDomainToResponse(warehouseToResponse);
         return ResponseEntity.ok(warehouseResponse);
     }
 }

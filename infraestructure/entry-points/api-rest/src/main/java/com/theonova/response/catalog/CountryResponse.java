@@ -1,10 +1,10 @@
 package com.theonova.response.catalog;
 
+import com.theonova.exceptions.dto.CommonDataOutput;
 import lombok.Builder;
 
 @Builder
-public record CountryResponse (
-        String iso2,
-        String name
-){
+public class CountryResponse extends CommonDataOutput {
+        String iso2;
+        String name;
 }

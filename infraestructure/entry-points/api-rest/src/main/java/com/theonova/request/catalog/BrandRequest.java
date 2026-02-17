@@ -1,6 +1,7 @@
 package com.theonova.request.catalog;
 
-public record BrandRequest(
-        String name
-) {
+import com.theonova.exceptions.dto.CommonDataEntry;
+
+public class BrandRequest extends CommonDataEntry {
+        String name;
 }

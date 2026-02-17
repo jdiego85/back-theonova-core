@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public interface RepositoryEngine<T, E> extends JpaRepository<T,E> {
+public interface RepositoryEngine<T, ID> extends JpaRepository<T,ID> {
     List<T> findAllByEstado(Boolean estado);
     List<T> findAllByEstado(Boolean estado, Sort sort);
     List<T> findAllByIdAndEstado(Long id ,Boolean estado, Sort sort);

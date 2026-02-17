@@ -26,6 +26,13 @@ subprojects {
     }
 
     dependencies {
+        implementation 'org.mapstruct:mapstruct:1.6.3'
+        annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+        annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+        implementation("com.fasterxml.jackson.core:jackson-core:2.21.0")
+        implementation("com.fasterxml.jackson.core:jackson-annotations:2.21")
+
         implementation platform("org.springframework.boot:spring-boot-dependencies:3.5.9")
         compileOnly("org.projectlombok:lombok:1.18.42")
         annotationProcessor("org.projectlombok:lombok:1.18.42")
