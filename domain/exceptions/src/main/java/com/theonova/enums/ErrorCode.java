@@ -12,6 +12,7 @@ public enum ErrorCode {
     COUNTRY_NOT_FOUND("CTR-001", "Country not found"),
     COUNTRY_ALREADY_EXISTS("CTR-002", "Country already exists"),
     INVALID_COUNTRY_CODE("CTR-003", "Invalid country ISO code"),
+    COUNTRY_NOT_SUPPORTED("CTR-004","País no soportado"),
 
     // ORDER
     ORDER_NOT_FOUND("ORD-001", "Order not found"),

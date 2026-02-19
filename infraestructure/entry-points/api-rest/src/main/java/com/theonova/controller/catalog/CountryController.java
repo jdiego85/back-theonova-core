@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CountryController {
 
-    private static CountryUseCase countryUseCase;
+    private final CountryUseCase countryUseCase;
 
     @PostMapping("/create")
     public ResponseEntity<CountryResponse> create(@RequestBody CountryRequest countryRequest){

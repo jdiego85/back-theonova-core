@@ -20,7 +20,8 @@ public class CountryServiceAdapter implements CountryGateway {
 
     @Override
     public Optional<Country> findByIso2(String iso2) {
-        return Optional.empty();
+        return countryRepository.findByIso2(iso2)
+                .map(countryEntityMapper::mapperEntityToDomain);
     }
 
     @Override

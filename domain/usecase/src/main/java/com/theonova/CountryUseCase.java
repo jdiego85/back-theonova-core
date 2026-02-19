@@ -1,6 +1,8 @@
 package com.theonova;
 
 import com.theonova.entities.catalog.Country;
+import com.theonova.enums.ErrorCode;
+import com.theonova.exceptions.BusinessException;
 import com.theonova.gateways.catalog.CountryGateway;
 import com.theonova.service.CountryService;
 import com.theonova.steps.catalog.CountryIsoStep;
@@ -15,11 +17,17 @@ public class CountryUseCase {
     private final CountryService countryService;
 
     public Country execute(Country country) {
-        Country countryObject = (Country) countryService.flowCreateCountry(country);
-        if (Objects.nonNull(countryObject)) {
-            return countryGateway.saveItem(countryObject);
+        Country readyToSave = countryService.flowCreateCountry(country);
+        // valida que el ISO se resolvió
+        if (readyToSave.iso2() == null || readyToSave.iso2().isBlank()) {
+            throw new BusinessException(ErrorCode.COUNTRY_NOT_SUPPORTED);
         }
-        return Country.builder().build();
+        // valida duplicado por iso2
+        if (countryGateway.findByIso2(readyToSave.iso2()).isPresent()) {
+            throw new BusinessException(ErrorCode.COUNTRY_ALREADY_EXISTS);
+        }
+
+        return countryGateway.saveItem(readyToSave);
 
     }
 }

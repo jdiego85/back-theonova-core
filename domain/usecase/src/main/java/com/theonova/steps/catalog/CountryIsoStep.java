@@ -5,12 +5,13 @@ import com.theonova.enums.CountryIso;
 import com.theonova.enums.ErrorCode;
 import com.theonova.exceptions.BusinessException;
 
+import java.text.Normalizer;
+import java.util.Locale;
+
 public class CountryIsoStep {
 
     public static String getCountryIso(Country country) {
-        if (country == null) {
-            throw new BusinessException(ErrorCode.COUNTRY_NOT_FOUND);
-        }
+        if (country == null || country.name() == null) return null;
         return CountryIso.fromName(country.name());
     }
 }
