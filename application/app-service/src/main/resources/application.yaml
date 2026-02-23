@@ -2,6 +2,20 @@ spring:
   application:
     name: "back-theonova-core"
   datasource:
+    url: ${MYSQL_JDBC_URL:jdbc:mysql://localhost:3306/store?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:123456789}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+          format_sql: true
+      open-in-view: false
+
     hikari:
       auto-commit: true
       connection-timeout: 30000
@@ -10,7 +24,7 @@ spring:
       minimum-idle: 8
       max-lifetime: 900000
       pool-name: PoolConnection-TheonovaProject
-      connection-test-query: 1
+
 server:
   port: 8080
 management:

@@ -1,7 +1,11 @@
 package com.theonova.repository.catalog;
 
-import com.theonova.repository.RepositoryEngine;
 import com.theonova.tables.catalog.ProductCategoryEntity;
+import com.theonova.tables.catalog.ProductCategoryId;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductCategoryRepository extends RepositoryEngine<ProductCategoryEntity,Long> {
+import java.util.Optional;
+
+public interface ProductCategoryRepository extends JpaRepository<ProductCategoryEntity, ProductCategoryId> {
+    Optional<ProductCategoryEntity> findByIdProductIdAndIdCategoryId(Long productId, Long categoryId);
 }

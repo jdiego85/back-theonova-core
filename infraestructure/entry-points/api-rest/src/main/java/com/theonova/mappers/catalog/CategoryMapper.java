@@ -8,9 +8,9 @@ public class CategoryMapper {
 
     public static Category requestToDomain(CategoryRequest categoryRequest){
         return Category.builder()
-                .parentId(categoryRequest.parentId())
-                .name(categoryRequest.name())
-                .slug(categoryRequest.slug())
+                .parentId(categoryRequest.getParentId())
+                .name(categoryRequest.getName())
+                .slug(categoryRequest.getSlug())
                 .build();
 
     }

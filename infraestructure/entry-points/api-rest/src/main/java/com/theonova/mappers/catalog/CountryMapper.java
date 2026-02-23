@@ -7,7 +7,7 @@ import com.theonova.response.catalog.CountryResponse;
 public class CountryMapper {
     public static Country requestToDomain(CountryRequest countryRequest){
         return Country.builder()
-                .name(countryRequest.name())
+                .name(countryRequest.getName())
                 .build();
     }
 

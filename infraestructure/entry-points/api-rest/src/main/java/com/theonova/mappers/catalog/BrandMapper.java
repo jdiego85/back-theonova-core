@@ -7,7 +7,7 @@ import com.theonova.response.catalog.BrandResponse;
 public class BrandMapper {
     public static Brand requestToDomain(BrandRequest brandRequest){
         return Brand.builder()
-                .name(brandRequest.name())
+                .name(brandRequest.getName())
                 .build();
     }
     public static BrandResponse domainToResponse(Brand brand){

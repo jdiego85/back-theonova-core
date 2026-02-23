@@ -1,5 +1,6 @@
 package com.theonova.tables.catalog;
 
+import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
