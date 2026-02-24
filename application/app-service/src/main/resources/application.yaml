@@ -7,15 +7,6 @@ spring:
     password: ${MYSQL_PASSWORD:123456789}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    jpa:
-      hibernate:
-        ddl-auto: update
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.MySQL8Dialect
-          format_sql: true
-      open-in-view: false
-
     hikari:
       auto-commit: true
       connection-timeout: 30000
@@ -24,6 +15,18 @@ spring:
       minimum-idle: 8
       max-lifetime: 900000
       pool-name: PoolConnection-TheonovaProject
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    open-in-view: false
+
+
 
 server:
   port: 8080

@@ -6,7 +6,7 @@ import java.time.Instant;
 
 @Builder(toBuilder = true)
 public record Country(
-        long id,
+        Long id,
         String iso2,
         String name
 ) {

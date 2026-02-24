@@ -23,11 +23,11 @@ public abstract class ConcurrencyEntity implements Serializable {
 
     @Comment("Version number used for optimistic locking concurrency control")
     @Version
-    @Column(columnDefinition = "number (38,0) default 0 not null")
+    @Column(nullable = false)
     @Getter @Setter
-    private Integer version = 0;
+    private Long version;
 
-    @Column(columnDefinition = "number (1) default 1 not null")
+    @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     @Comment("Logical deletion flag (true = active, false = deleted)")
     @Getter @Setter
     private Boolean active = true;
