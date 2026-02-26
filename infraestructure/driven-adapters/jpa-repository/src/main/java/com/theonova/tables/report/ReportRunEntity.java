@@ -1,7 +1,7 @@
 package com.theonova.tables.report;
 
-import com.theonova.enums.ReportStatus;
-import com.theonova.enums.ReportType;
+import com.theonova.ReportStatus;
+import com.theonova.ReportType;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

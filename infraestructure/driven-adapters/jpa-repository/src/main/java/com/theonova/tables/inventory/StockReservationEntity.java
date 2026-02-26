@@ -1,6 +1,6 @@
 package com.theonova.tables.inventory;
 
-import com.theonova.enums.ReservationStatus;
+import com.theonova.ReservationStatus;
 import com.theonova.tables.catalog.ProductEntity;
 import com.theonova.tables.catalog.WarehouseEntity;
 import com.theonova.tables.checkout.CartEntity;
@@ -8,7 +8,6 @@ import com.theonova.tables.checkout.OrderEntity;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.*;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

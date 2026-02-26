@@ -1,7 +1,7 @@
 package com.theonova.entities.inventory;
 
-import com.theonova.enums.InventoryMovementType;
-import com.theonova.enums.InventoryReferenceType;
+import com.theonova.InventoryMovementType;
+import com.theonova.InventoryReferenceType;
 
 import java.time.Instant;
 

@@ -1,6 +1,6 @@
 package com.theonova.entities.catalog;
 
-import com.theonova.enums.AttributeDataType;
+import com.theonova.AttributeDataType;
 
 import java.time.Instant;
 

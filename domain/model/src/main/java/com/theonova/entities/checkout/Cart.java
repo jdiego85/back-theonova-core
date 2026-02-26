@@ -1,6 +1,6 @@
 package com.theonova.entities.checkout;
 
-import com.theonova.enums.CartStatus;
+import com.theonova.CartStatus;
 
 import java.time.Instant;
 

@@ -1,12 +1,11 @@
 package com.theonova.tables.procurement;
 
-import com.theonova.enums.PurchaseOrderStatus;
+import com.theonova.PurchaseOrderStatus;
 import com.theonova.tables.catalog.WarehouseEntity;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

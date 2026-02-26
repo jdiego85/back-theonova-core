@@ -1,8 +1,8 @@
 package com.theonova.tables.checkout;
 
-import com.theonova.enums.NotificationChannel;
-import com.theonova.enums.NotificationStatus;
-import com.theonova.enums.NotificationType;
+import com.theonova.NotificationChannel;
+import com.theonova.NotificationStatus;
+import com.theonova.NotificationType;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.time.Instant;
+
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

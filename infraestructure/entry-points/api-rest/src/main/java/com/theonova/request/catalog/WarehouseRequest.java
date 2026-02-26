@@ -2,10 +2,11 @@ package com.theonova.request.catalog;
 
 import com.theonova.exceptions.dto.CommonDataEntry;
 import lombok.Builder;
+import lombok.Data;
 
-@Builder
+@Data
 public class WarehouseRequest extends CommonDataEntry {
-        long countryId;
+        Long countryId;
         String code;
         String name;
         String city;

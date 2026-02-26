@@ -12,7 +12,7 @@ include(":app-service",
         ":http-client",
         ":usecase",
         ":model",
-        ":exceptions")
+        ":domain-exceptions")
 
 project(":api-rest").projectDir = file("./infraestructure/entry-points/api-rest")
 
@@ -21,6 +21,6 @@ project(":jpa-repository").projectDir = file("./infraestructure/driven-adapters/
 
 project(":model").projectDir = file("./domain/model")
 project(":usecase").projectDir = file("./domain/usecase")
-project(":exceptions").projectDir = file("./domain/exceptions")
+project(":domain-exceptions").projectDir = file("./domain/domain-exceptions")
 
 project(":app-service").projectDir = file("./application/app-service")

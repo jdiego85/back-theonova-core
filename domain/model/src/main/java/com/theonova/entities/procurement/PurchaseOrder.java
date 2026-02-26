@@ -1,6 +1,6 @@
 package com.theonova.entities.procurement;
 
-import com.theonova.enums.PurchaseOrderStatus;
+import com.theonova.PurchaseOrderStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;

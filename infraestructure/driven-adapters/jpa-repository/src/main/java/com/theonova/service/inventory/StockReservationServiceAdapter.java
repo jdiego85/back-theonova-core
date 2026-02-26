@@ -1,6 +1,6 @@
 package com.theonova.service.inventory;
 
-import com.theonova.enums.ReservationStatus;
+import com.theonova.ReservationStatus;
 
 import java.time.Instant;
 

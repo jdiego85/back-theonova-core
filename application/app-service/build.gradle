@@ -4,7 +4,7 @@ dependencies {
     implementation project(":http-client")
     implementation project(":usecase")
     implementation project(":model")
-    implementation project(":exceptions")
+    implementation project(":domain-exceptions")
     implementation project(":jpa-repository")
     implementation("org.springframework.boot:spring-boot-starter")
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
