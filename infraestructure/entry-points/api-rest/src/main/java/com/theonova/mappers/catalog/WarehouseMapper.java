@@ -12,7 +12,6 @@ public interface WarehouseMapper {
 
     WarehouseMapper INSTANCE = Mappers.getMapper(WarehouseMapper.class);
 
-    @Mapping(target = "active", constant = "true")
     @Mapping(target = "defaultWarehouse", constant = "true")
     Warehouse mapperRequestToDomain(WarehouseRequest warehouseRequest);
     WarehouseResponse mapperDomainToResponse(Warehouse warehouse);

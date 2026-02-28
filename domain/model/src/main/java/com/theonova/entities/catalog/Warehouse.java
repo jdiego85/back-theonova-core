@@ -4,17 +4,13 @@ import lombok.Builder;
 
 import java.time.Instant;
 
-@Builder
+@Builder(toBuilder = true)
 public record Warehouse(
-
-        long countryId,
+        Long countryId,
+        String iso2,
         String code,
         String name,
         String city,
         String address,
-        boolean active,//is_active
-        boolean defaultWarehouse,//is_default
-        Instant createdAt,
-        Instant updatedAt
-) {
-}
+        boolean defaultWarehouse//is_default
+        ) {}

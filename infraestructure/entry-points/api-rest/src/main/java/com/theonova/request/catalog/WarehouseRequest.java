@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class WarehouseRequest extends CommonDataEntry {
-        Long countryId;
+        String iso2;
         String code;
         String name;
         String city;

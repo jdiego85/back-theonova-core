@@ -9,5 +9,4 @@ public record Country(
         Long id,
         String iso2,
         String name
-) {
-}
+) {}

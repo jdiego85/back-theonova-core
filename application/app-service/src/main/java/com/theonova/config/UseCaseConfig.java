@@ -4,6 +4,7 @@ import com.theonova.CountryUseCase;
 import com.theonova.ProductUseCase;
 import com.theonova.WarehouseUseCase;
 import com.theonova.gateways.catalog.CountryGateway;
+import com.theonova.gateways.catalog.WarehouseGateway;
 import com.theonova.service.CountryService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,12 +26,15 @@ public class UseCaseConfig {
     }
 
     @Bean
+    public WarehouseUseCase warehouseUseCase(WarehouseGateway warehouseGateway,
+                                             CountryGateway countryGateway) {
+        return new WarehouseUseCase(warehouseGateway, countryGateway);
+    }
+
+    @Bean
     public ProductUseCase productUseCase() {
         return new ProductUseCase();
     }
 
-    @Bean
-    public WarehouseUseCase warehouseUseCase() {
-        return new WarehouseUseCase();
-    }
+
 }
