@@ -2,13 +2,22 @@ package com.theonova.service.catalog;
 
 import com.theonova.entities.catalog.Category;
 import com.theonova.gateways.catalog.CategoryGateway;
+import com.theonova.mappers.CategoryEntityMapper;
+import com.theonova.repository.catalog.CategoryRepository;
+import com.theonova.tables.catalog.CategoryEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class CategoryServiceAdapter implements CategoryGateway {
+
+    private final CategoryRepository categoryRepository;
+    private final CategoryEntityMapper categoryEntityMapper;
+
     @Override
     public Optional<Category> findBySlug(String slug) {
         return Optional.empty();
@@ -16,7 +25,9 @@ public class CategoryServiceAdapter implements CategoryGateway {
 
     @Override
     public Category saveItem(Category item) {
-        return null;
+        CategoryEntity categoryEntity = categoryEntityMapper.mapperDomainToEntity(item);
+        CategoryEntity savedCategoryEntity = categoryRepository.save(categoryEntity);
+        return categoryEntityMapper.mapperEntityToDomain(savedCategoryEntity);
     }
 
     @Override

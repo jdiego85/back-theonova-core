@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CountryResponse extends CommonDataOutput {
+public class CountryResponse {
         String iso2;
         String name;
 }

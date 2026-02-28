@@ -6,12 +6,8 @@ import java.time.Instant;
 
 @Builder
 public record Category(
-        long id,
+        Long id,
         Long parentId,
         String name,
-        String slug,
-        boolean active,//is_active
-        Instant createdAt,
-        Instant updatedAt
-) {
-}
+        String slug
+) {}

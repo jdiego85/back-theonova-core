@@ -4,6 +4,7 @@ import com.theonova.CountryUseCase;
 import com.theonova.entities.catalog.Country;
 import com.theonova.mappers.catalog.CountryMapper;
 import com.theonova.request.catalog.CountryRequest;
+import com.theonova.response.catalog.ApiResponseWrapper;
 import com.theonova.response.catalog.CountryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,10 @@ public class CountryController {
     private final CountryUseCase countryUseCase;
 
     @PostMapping("/create")
-    public ResponseEntity<CountryResponse> create(@RequestBody CountryRequest countryRequest){
+    public ResponseEntity<ApiResponseWrapper<CountryResponse>> create(@RequestBody CountryRequest countryRequest){
         Country countryToDomain = CountryMapper.requestToDomain(countryRequest);
         Country countryToResponse = countryUseCase.execute(countryToDomain);
-        CountryResponse countryResponse = CountryMapper.domainToResponse(countryToResponse);
+        ApiResponseWrapper<CountryResponse> countryResponse = CountryMapper.domainToResponseWrapper(countryToResponse);
     return ResponseEntity.ok(countryResponse);
     }
 }

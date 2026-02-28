@@ -4,6 +4,7 @@ import com.theonova.CategoryUseCase;
 import com.theonova.entities.catalog.Category;
 import com.theonova.mappers.catalog.CategoryMapper;
 import com.theonova.request.catalog.CategoryRequest;
+import com.theonova.response.catalog.ApiResponseWrapper;
 import com.theonova.response.catalog.CategoryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/category")
 @RequiredArgsConstructor
 public class CategoryController {
-    private static CategoryUseCase categoryUseCase;
+    private final CategoryUseCase categoryUseCase;
 
-    @PostMapping
-    public ResponseEntity<CategoryResponse> create (@RequestBody CategoryRequest categoryRequest) {
+    @PostMapping("/create")
+    public ResponseEntity<ApiResponseWrapper<CategoryResponse>> create (@RequestBody CategoryRequest categoryRequest) {
         Category categoryToDomain = CategoryMapper.requestToDomain(categoryRequest);
         Category categoryResponse = categoryUseCase.execute(categoryToDomain);
-        return ResponseEntity.ok(CategoryMapper.domainToResponse(categoryResponse));
+        return ResponseEntity.ok(CategoryMapper.domainToResponseWrapper(categoryResponse));
     }
 }

@@ -13,7 +13,7 @@ import java.time.Instant;
 public class GeneralMessage {
     private String transactionCode;
     private String service;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", timezone = "America/Guayaquil")
     private Instant responseDate;
     private String type;
     private String transactionStatus;

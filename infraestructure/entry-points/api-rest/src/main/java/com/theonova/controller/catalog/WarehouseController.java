@@ -4,6 +4,7 @@ import com.theonova.WarehouseUseCase;
 import com.theonova.entities.catalog.Warehouse;
 import com.theonova.mappers.catalog.WarehouseMapper;
 import com.theonova.request.catalog.WarehouseRequest;
+import com.theonova.response.catalog.ApiResponseWrapper;
 import com.theonova.response.catalog.WarehouseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,10 @@ public class WarehouseController {
     private final WarehouseMapper warehouseMapper;
 
     @PostMapping("/create")
-    public ResponseEntity<WarehouseResponse>  create (@RequestBody WarehouseRequest warehouseRequest){
+    public ResponseEntity<ApiResponseWrapper<WarehouseResponse>>  create (@RequestBody WarehouseRequest warehouseRequest){
         Warehouse warehousetoDomain = warehouseMapper.mapperRequestToDomain(warehouseRequest);
         Warehouse warehouseToResponse = warehouseUseCase.execute(warehousetoDomain);
-        WarehouseResponse warehouseResponse = warehouseMapper.mapperDomainToResponse(warehouseToResponse);
+        ApiResponseWrapper<WarehouseResponse> warehouseResponse = warehouseMapper.domainToResponse(warehouseToResponse);
         return ResponseEntity.ok(warehouseResponse);
     }
 }

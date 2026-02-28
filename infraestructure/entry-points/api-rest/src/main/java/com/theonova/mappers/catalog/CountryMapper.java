@@ -2,6 +2,7 @@ package com.theonova.mappers.catalog;
 
 import com.theonova.entities.catalog.Country;
 import com.theonova.request.catalog.CountryRequest;
+import com.theonova.response.catalog.ApiResponseWrapper;
 import com.theonova.response.catalog.CountryResponse;
 
 public class CountryMapper {
@@ -16,5 +17,9 @@ public class CountryMapper {
                 .name(country.name())
                 .iso2(country.iso2())
                 .build();
+    }
+
+    public static ApiResponseWrapper<CountryResponse> domainToResponseWrapper(Country country){
+        return ApiResponseWrapper.wrapUp("countryService", domainToResponse(country));
     }
 }

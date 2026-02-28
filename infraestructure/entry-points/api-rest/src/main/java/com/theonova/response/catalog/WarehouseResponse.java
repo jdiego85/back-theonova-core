@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class WarehouseResponse extends CommonDataOutput {
+public class WarehouseResponse {
     String code;
     String name;
     String city;
