@@ -6,8 +6,6 @@ import java.time.Instant;
 
 @Builder
 public record Brand(
-        long id,
-        String name,
-        Instant createdAt
-) {
-}
+        Long id,
+        String name
+) {}

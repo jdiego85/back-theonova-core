@@ -1,9 +1,7 @@
 package com.theonova.config;
 
-import com.theonova.CategoryUseCase;
-import com.theonova.CountryUseCase;
-import com.theonova.ProductUseCase;
-import com.theonova.WarehouseUseCase;
+import com.theonova.*;
+import com.theonova.gateways.catalog.BrandGateway;
 import com.theonova.gateways.catalog.CategoryGateway;
 import com.theonova.gateways.catalog.CountryGateway;
 import com.theonova.gateways.catalog.WarehouseGateway;
@@ -37,6 +35,11 @@ public class UseCaseConfig {
     @Bean
     public CategoryUseCase categoryUseCase(CategoryGateway categoryGateway) {
         return new CategoryUseCase(categoryGateway);
+    }
+
+    @Bean
+    public BrandUseCase brandUseCase(BrandGateway brandGateway) {
+        return  new BrandUseCase(brandGateway);
     }
 
     @Bean
