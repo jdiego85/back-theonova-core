@@ -2,7 +2,7 @@ package com.theonova.mappers.catalog;
 
 import com.theonova.entities.catalog.Country;
 import com.theonova.request.catalog.CountryRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.catalog.CountryResponse;
 
 public class CountryMapper {

@@ -5,7 +5,7 @@ import com.theonova.entities.checkout.Cart;
 import com.theonova.enums.CartStatus;
 import com.theonova.exceptions.GlobalExceptionHandler;
 import com.theonova.mappers.checkout.CartMapper;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.checkout.CartResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -4,7 +4,7 @@ import com.theonova.business.inventory.ReorderSettingUseCase;
 import com.theonova.entities.inventory.ReorderSetting;
 import com.theonova.mappers.inventory.ReorderSettingMapper;
 import com.theonova.request.inventory.ReorderSettingRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.inventory.ReorderSettingResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

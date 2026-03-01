@@ -4,7 +4,7 @@ import com.theonova.business.catalog.CountryUseCase;
 import com.theonova.entities.catalog.Country;
 import com.theonova.mappers.catalog.CountryMapper;
 import com.theonova.request.catalog.CountryRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.catalog.CountryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

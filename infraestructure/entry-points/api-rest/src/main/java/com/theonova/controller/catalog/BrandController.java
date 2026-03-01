@@ -4,7 +4,7 @@ import com.theonova.business.catalog.BrandUseCase;
 import com.theonova.entities.catalog.Brand;
 import com.theonova.mappers.catalog.BrandMapper;
 import com.theonova.request.catalog.BrandRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.catalog.BrandResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

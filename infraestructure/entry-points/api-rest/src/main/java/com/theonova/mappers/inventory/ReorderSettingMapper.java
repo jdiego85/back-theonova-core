@@ -2,7 +2,7 @@ package com.theonova.mappers.inventory;
 
 import com.theonova.entities.inventory.ReorderSetting;
 import com.theonova.request.inventory.ReorderSettingRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.inventory.ReorderSettingResponse;
 import org.mapstruct.Mapper;
 

@@ -4,7 +4,7 @@ import com.theonova.business.inventory.InventoryBalanceUseCase;
 import com.theonova.entities.inventory.InventoryBalance;
 import com.theonova.exceptions.GlobalExceptionHandler;
 import com.theonova.mappers.inventory.InventoryBalanceMapper;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.inventory.InventoryBalanceResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -4,7 +4,7 @@ import com.theonova.business.checkout.CartUseCase;
 import com.theonova.entities.checkout.Cart;
 import com.theonova.mappers.checkout.CartMapper;
 import com.theonova.request.checkout.CartRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.checkout.CartResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

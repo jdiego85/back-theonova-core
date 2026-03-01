@@ -3,7 +3,7 @@ package com.theonova.controller.catalog;
 import com.theonova.entities.catalog.ProductCategory;
 import com.theonova.mappers.catalog.ProductCategoryMapper;
 import com.theonova.request.catalog.ProductCategoryRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.business.catalog.ProductCategoryUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

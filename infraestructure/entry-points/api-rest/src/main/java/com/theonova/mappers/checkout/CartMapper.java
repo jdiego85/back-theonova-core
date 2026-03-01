@@ -2,7 +2,7 @@ package com.theonova.mappers.checkout;
 
 import com.theonova.entities.checkout.Cart;
 import com.theonova.request.checkout.CartRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.checkout.CartResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

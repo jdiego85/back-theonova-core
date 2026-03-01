@@ -2,7 +2,7 @@ package com.theonova.mappers.catalog;
 
 import com.theonova.entities.catalog.Warehouse;
 import com.theonova.request.catalog.WarehouseRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.catalog.WarehouseResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

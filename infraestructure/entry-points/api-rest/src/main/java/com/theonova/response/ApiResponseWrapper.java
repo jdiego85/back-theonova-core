@@ -1,4 +1,4 @@
-package com.theonova.response.catalog;
+package com.theonova.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.theonova.exceptions.dto.CommonDataOutput;

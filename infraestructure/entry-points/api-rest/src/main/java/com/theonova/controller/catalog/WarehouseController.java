@@ -4,7 +4,7 @@ import com.theonova.business.catalog.WarehouseUseCase;
 import com.theonova.entities.catalog.Warehouse;
 import com.theonova.mappers.catalog.WarehouseMapper;
 import com.theonova.request.catalog.WarehouseRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.catalog.WarehouseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

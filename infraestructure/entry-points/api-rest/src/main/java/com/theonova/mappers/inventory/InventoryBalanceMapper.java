@@ -2,7 +2,7 @@ package com.theonova.mappers.inventory;
 
 import com.theonova.entities.inventory.InventoryBalance;
 import com.theonova.request.inventory.InventoryBalanceRequest;
-import com.theonova.response.catalog.ApiResponseWrapper;
+import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.inventory.InventoryBalanceResponse;
 import org.mapstruct.Mapper;
 
