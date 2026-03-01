@@ -4,7 +4,7 @@ import com.theonova.entities.catalog.ProductCategory;
 import com.theonova.mappers.catalog.ProductCategoryMapper;
 import com.theonova.request.catalog.ProductCategoryRequest;
 import com.theonova.response.catalog.ApiResponseWrapper;
-import com.theonova.ProductCategoryUseCase;
+import com.theonova.business.catalog.ProductCategoryUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

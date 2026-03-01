@@ -2,7 +2,7 @@ package com.theonova.service.catalog;
 
 import com.theonova.entities.catalog.Brand;
 import com.theonova.gateways.catalog.BrandGateway;
-import com.theonova.mappers.BrandEntityMapper;
+import com.theonova.mappers.catalog.BrandEntityMapper;
 import com.theonova.repository.catalog.BrandRepository;
 import com.theonova.tables.catalog.BrandEntity;
 import lombok.RequiredArgsConstructor;

@@ -1,13 +1,16 @@
 package com.theonova.entities.inventory;
 
-import java.time.Instant;
+import com.theonova.entities.catalog.Product;
+import com.theonova.entities.catalog.Warehouse;
+import lombok.Builder;
 
+@Builder(toBuilder = true)
 public record InventoryBalance(
-        long id,
-        long productId,
-        long warehouseId,
+        Long id,
+        Warehouse warehouse,
+        Product product,
+        String skuProduct,
+        String codeWarehouse,
         int onHand,
-        int reserved,
-        Instant updatedAt
-) {
-}
+        int reserved
+) {}

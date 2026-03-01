@@ -2,7 +2,7 @@ package com.theonova.service.catalog;
 
 import com.theonova.entities.catalog.Category;
 import com.theonova.gateways.catalog.CategoryGateway;
-import com.theonova.mappers.CategoryEntityMapper;
+import com.theonova.mappers.catalog.CategoryEntityMapper;
 import com.theonova.repository.catalog.CategoryRepository;
 import com.theonova.tables.catalog.CategoryEntity;
 import lombok.RequiredArgsConstructor;

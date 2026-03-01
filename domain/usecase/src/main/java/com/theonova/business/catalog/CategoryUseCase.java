@@ -1,4 +1,4 @@
-package com.theonova;
+package com.theonova.business.catalog;
 
 import com.theonova.entities.catalog.Category;
 import com.theonova.gateways.catalog.CategoryGateway;

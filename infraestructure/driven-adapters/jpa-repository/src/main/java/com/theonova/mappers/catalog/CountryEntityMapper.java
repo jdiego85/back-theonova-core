@@ -1,4 +1,4 @@
-package com.theonova.mappers;
+package com.theonova.mappers.catalog;
 
 import com.theonova.entities.catalog.Country;
 import com.theonova.tables.catalog.CountryEntity;

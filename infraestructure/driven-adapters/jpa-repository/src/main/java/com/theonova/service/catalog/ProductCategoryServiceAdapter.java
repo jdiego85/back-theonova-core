@@ -3,7 +3,7 @@ package com.theonova.service.catalog;
 import com.theonova.entities.catalog.ProductCategory;
 import com.theonova.exceptions.BusinessException;
 import com.theonova.gateways.catalog.ProductCategoryGateway;
-import com.theonova.mappers.ProductCategoryEntityMapper;
+import com.theonova.mappers.catalog.ProductCategoryEntityMapper;
 import com.theonova.repository.catalog.CategoryRepository;
 import com.theonova.repository.catalog.ProductCategoryRepository;
 import com.theonova.repository.catalog.ProductRepository;

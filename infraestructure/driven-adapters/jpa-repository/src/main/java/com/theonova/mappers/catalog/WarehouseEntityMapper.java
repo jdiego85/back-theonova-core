@@ -1,4 +1,4 @@
-package com.theonova.mappers;
+package com.theonova.mappers.catalog;
 
 import com.theonova.entities.catalog.Warehouse;
 import com.theonova.tables.catalog.WarehouseEntity;

@@ -1,6 +1,6 @@
 package com.theonova.controller.catalog;
 
-import com.theonova.CountryUseCase;
+import com.theonova.business.catalog.CountryUseCase;
 import com.theonova.entities.catalog.Country;
 import com.theonova.mappers.catalog.CountryMapper;
 import com.theonova.request.catalog.CountryRequest;

@@ -1,6 +1,6 @@
 package com.theonova.controller.catalog;
 
-import com.theonova.BrandUseCase;
+import com.theonova.business.catalog.BrandUseCase;
 import com.theonova.entities.catalog.Brand;
 import com.theonova.mappers.catalog.BrandMapper;
 import com.theonova.request.catalog.BrandRequest;

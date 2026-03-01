@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface WarehouseGateway extends ServiceManager<Warehouse,Long> {
     Optional<Warehouse> findDefaultByCountryIso2(String iso2);
+    Optional<Warehouse> findByCode(String code);
 }

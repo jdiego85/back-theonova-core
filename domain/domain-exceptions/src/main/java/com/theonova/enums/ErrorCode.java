@@ -24,6 +24,9 @@ public enum ErrorCode {
     BRAND_NOT_FOUND("BRD-001", "Brand not found"),
     INVALID_BRAND_ID("BRD-002", "Invalid brand ID"),
 
+    //WAREHOUSE
+    INVALID_WAREHOUSE_CODE("WRH-001", "Invalid warehouse code"),
+
     // ORDER
     ORDER_NOT_FOUND("ORD-001", "Order not found"),
     ORDER_ALREADY_PAID("ORD-002", "Order already paid"),

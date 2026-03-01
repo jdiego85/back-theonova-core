@@ -2,7 +2,7 @@ package com.theonova.service.catalog;
 
 import com.theonova.entities.catalog.Country;
 import com.theonova.gateways.catalog.CountryGateway;
-import com.theonova.mappers.CountryEntityMapper;
+import com.theonova.mappers.catalog.CountryEntityMapper;
 import com.theonova.repository.catalog.CountryRepository;
 import com.theonova.tables.catalog.CountryEntity;
 import lombok.RequiredArgsConstructor;

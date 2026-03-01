@@ -2,7 +2,7 @@ package com.theonova.service.catalog;
 
 import com.theonova.entities.catalog.Warehouse;
 import com.theonova.gateways.catalog.WarehouseGateway;
-import com.theonova.mappers.WarehouseEntityMapper;
+import com.theonova.mappers.catalog.WarehouseEntityMapper;
 import com.theonova.repository.catalog.CountryRepository;
 import com.theonova.repository.catalog.WarehouseRepository;
 import com.theonova.tables.catalog.CountryEntity;
@@ -24,6 +24,12 @@ public class WarehouseServiceAdapter implements WarehouseGateway {
     @Override
     public Optional<Warehouse> findDefaultByCountryIso2(String iso2) {
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<Warehouse> findByCode(String code) {
+        return warehouseRepository.findByCode(code)
+                .map(warehouseEntityMapper::mapperEntityToDomain);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.theonova.controller.catalog;
 
-import com.theonova.CategoryUseCase;
+import com.theonova.business.catalog.CategoryUseCase;
 import com.theonova.entities.catalog.Category;
 import com.theonova.mappers.catalog.CategoryMapper;
 import com.theonova.request.catalog.CategoryRequest;

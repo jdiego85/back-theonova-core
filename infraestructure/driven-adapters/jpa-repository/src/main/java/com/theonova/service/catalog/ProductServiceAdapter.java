@@ -1,11 +1,8 @@
 package com.theonova.service.catalog;
 
-import com.theonova.entities.catalog.Brand;
 import com.theonova.entities.catalog.Product;
-import com.theonova.gateways.catalog.BrandGateway;
 import com.theonova.gateways.catalog.ProductGateway;
-import com.theonova.mappers.BrandEntityMapper;
-import com.theonova.mappers.ProductEntityMapper;
+import com.theonova.mappers.catalog.ProductEntityMapper;
 import com.theonova.repository.catalog.BrandRepository;
 import com.theonova.repository.catalog.ProductRepository;
 import com.theonova.tables.catalog.BrandEntity;

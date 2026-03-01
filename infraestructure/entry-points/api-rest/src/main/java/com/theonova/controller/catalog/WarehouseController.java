@@ -1,6 +1,6 @@
 package com.theonova.controller.catalog;
 
-import com.theonova.WarehouseUseCase;
+import com.theonova.business.catalog.WarehouseUseCase;
 import com.theonova.entities.catalog.Warehouse;
 import com.theonova.mappers.catalog.WarehouseMapper;
 import com.theonova.request.catalog.WarehouseRequest;

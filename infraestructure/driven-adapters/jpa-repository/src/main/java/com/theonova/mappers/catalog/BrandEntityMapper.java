@@ -1,4 +1,4 @@
-package com.theonova.mappers;
+package com.theonova.mappers.catalog;
 
 import com.theonova.entities.catalog.Brand;
 import com.theonova.tables.catalog.BrandEntity;
