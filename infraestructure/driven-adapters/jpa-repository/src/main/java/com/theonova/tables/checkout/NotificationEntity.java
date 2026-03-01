@@ -1,8 +1,8 @@
 package com.theonova.tables.checkout;
 
-import com.theonova.NotificationChannel;
-import com.theonova.NotificationStatus;
-import com.theonova.NotificationType;
+import com.theonova.enums.NotificationChannel;
+import com.theonova.enums.NotificationStatus;
+import com.theonova.enums.NotificationType;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

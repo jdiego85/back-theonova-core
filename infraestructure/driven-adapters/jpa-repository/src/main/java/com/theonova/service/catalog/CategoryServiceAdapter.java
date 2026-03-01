@@ -20,7 +20,8 @@ public class CategoryServiceAdapter implements CategoryGateway {
 
     @Override
     public Optional<Category> findBySlug(String slug) {
-        return Optional.empty();
+        return categoryRepository.findBySlug(slug)
+                .map(categoryEntityMapper::mapperEntityToDomain);
     }
 
     @Override
@@ -37,7 +38,8 @@ public class CategoryServiceAdapter implements CategoryGateway {
 
     @Override
     public Optional<Category> findById(Long id) {
-        return null;
+        return categoryRepository.findById(id)
+                .map(categoryEntityMapper::mapperEntityToDomain);
     }
 
     @Override

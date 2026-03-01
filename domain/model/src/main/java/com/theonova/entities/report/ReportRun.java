@@ -1,7 +1,7 @@
 package com.theonova.entities.report;
 
-import com.theonova.ReportStatus;
-import com.theonova.ReportType;
+import com.theonova.enums.ReportStatus;
+import com.theonova.enums.ReportType;
 
 import java.time.Instant;
 import java.time.LocalDate;

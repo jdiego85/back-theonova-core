@@ -1,7 +1,7 @@
 package com.theonova.tables.checkout;
 
-import com.theonova.OrderStatus;
-import com.theonova.PaymentStatus;
+import com.theonova.enums.OrderStatus;
+import com.theonova.enums.PaymentStatus;
 import com.theonova.tables.catalog.WarehouseEntity;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.*;

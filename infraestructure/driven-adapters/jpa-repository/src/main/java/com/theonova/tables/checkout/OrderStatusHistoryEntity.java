@@ -1,6 +1,6 @@
 package com.theonova.tables.checkout;
 
-import com.theonova.OrderStatus;
+import com.theonova.enums.OrderStatus;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.*;
 

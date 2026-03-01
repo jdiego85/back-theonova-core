@@ -1,7 +1,7 @@
 package com.theonova.tables.inventory;
 
-import com.theonova.InventoryMovementType;
-import com.theonova.InventoryReferenceType;
+import com.theonova.enums.InventoryMovementType;
+import com.theonova.enums.InventoryReferenceType;
 import com.theonova.tables.catalog.ProductEntity;
 import com.theonova.tables.catalog.WarehouseEntity;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;

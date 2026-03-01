@@ -1,7 +1,7 @@
 package com.theonova.entities.checkout;
 
-import com.theonova.OrderStatus;
-import com.theonova.PaymentStatus;
+import com.theonova.enums.OrderStatus;
+import com.theonova.enums.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;

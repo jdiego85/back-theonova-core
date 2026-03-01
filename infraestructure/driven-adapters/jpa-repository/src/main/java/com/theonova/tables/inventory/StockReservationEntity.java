@@ -1,6 +1,6 @@
 package com.theonova.tables.inventory;
 
-import com.theonova.ReservationStatus;
+import com.theonova.enums.ReservationStatus;
 import com.theonova.tables.catalog.ProductEntity;
 import com.theonova.tables.catalog.WarehouseEntity;
 import com.theonova.tables.checkout.CartEntity;

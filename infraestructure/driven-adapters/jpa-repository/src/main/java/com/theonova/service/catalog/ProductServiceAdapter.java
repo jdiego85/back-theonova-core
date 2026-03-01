@@ -26,7 +26,8 @@ public class ProductServiceAdapter implements ProductGateway {
 
     @Override
     public Optional<Product> findBySku(String sku) {
-        return Optional.empty();
+        return productRepository.findBySku(sku)
+                .map(productEntityMapper::mapperEntityToDomain);
     }
 
     @Override

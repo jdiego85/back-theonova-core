@@ -1,6 +1,6 @@
 package com.theonova.tables.checkout;
 
-import com.theonova.CartStatus;
+import com.theonova.enums.CartStatus;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

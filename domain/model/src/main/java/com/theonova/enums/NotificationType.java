@@ -1,4 +1,4 @@
-package com.theonova;
+package com.theonova.enums;
 
 public enum NotificationType {
     ORDER_STATUS_CHANGED,

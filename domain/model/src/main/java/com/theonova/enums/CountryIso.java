@@ -1,4 +1,4 @@
-package com.theonova;
+package com.theonova.enums;
 
 import lombok.Getter;
 

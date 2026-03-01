@@ -1,7 +1,11 @@
 package com.theonova.entities.catalog;
 
+import lombok.Builder;
+
+@Builder(toBuilder = true)
 public record ProductCategory(
-        long productId,
-        long categoryId
-) {
-}
+        Long categoryId,
+        Long productId,
+        String slug,
+        String sku
+) {}

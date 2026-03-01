@@ -1,6 +1,6 @@
 package com.theonova.tables.catalog;
 
-import com.theonova.AttributeDataType;
+import com.theonova.enums.AttributeDataType;
 import com.theonova.tables.utils.concurrence.ConcurrencyEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

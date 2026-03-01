@@ -1,7 +1,7 @@
 package com.theonova.steps.catalog;
 
 import com.theonova.entities.catalog.Country;
-import com.theonova.CountryIso;
+import com.theonova.enums.CountryIso;
 
 public class CountryIsoStep {
 
