@@ -1,13 +1,13 @@
 package com.theonova.entities.inventory;
 
-import java.time.Instant;
+import lombok.Builder;
 
+@Builder(toBuilder = true)
 public record ReorderSetting(
-        long id,
-        long productId,
-        long warehouseId,
-        int threshold,
-        Instant createdAt,
-        Instant updatedAt
-) {
-}
+        Long id,
+        Long productId,
+        Long warehouseId,
+        String skuProduct,
+        String codeWarehouse,
+        int threshold
+) {}
