@@ -7,6 +7,7 @@ import org.springframework.context.NoSuchMessageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -37,6 +38,25 @@ public class GlobalExceptionHandler {
                 ExceptionEnum.GENERAL_ERROR.getCode(),
                 "JSON inválido",
                 "JSON inválido o campos con tipo incorrecto",
+                ex.getClass().getName()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(msg);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<GeneralMessage> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
+        String description = ex.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+                .findFirst()
+                .orElse("Request body inválido");
+
+        GeneralMessage msg = buildGeneralMessage(
+                HttpStatus.BAD_REQUEST,
+                ExceptionEnum.GENERAL_ERROR.getCode(),
+                "Error de validación",
+                description,
                 ex.getClass().getName()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(msg);

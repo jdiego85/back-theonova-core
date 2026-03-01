@@ -18,7 +18,7 @@ public final class ErrorCodeHttpStatusMapper {
             case COUNTRY_NOT_FOUND -> HttpStatus.NOT_FOUND;
             case COUNTRY_ALREADY_EXISTS, ORDER_ALREADY_PAID -> HttpStatus.CONFLICT;
             case INVALID_COUNTRY_CODE, COUNTRY_NOT_SUPPORTED, INVALID_BRAND_ID,
-                    INVALID_CATEGORY_ID, INVALID_PRODUCT_ID-> HttpStatus.BAD_REQUEST;
+                    INVALID_CATEGORY_ID, INVALID_PRODUCT_ID, INVALID_WAREHOUSE_CODE -> HttpStatus.BAD_REQUEST;
 
             //BRAND
             case BRAND_NOT_FOUND -> HttpStatus.NOT_FOUND;
@@ -29,6 +29,9 @@ public final class ErrorCodeHttpStatusMapper {
             // PAYMENT
             case PAYMENT_FAILED -> HttpStatus.BAD_REQUEST;
             case PAYMENT_TIMEOUT -> HttpStatus.GATEWAY_TIMEOUT;
+
+            // Fallback for future enum values
+            default -> HttpStatus.BAD_REQUEST;
         };
     }
 }

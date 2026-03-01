@@ -3,6 +3,7 @@ dependencies{
     implementation project(":model")
     implementation project(":domain-exceptions")
     implementation ("org.springframework.boot:spring-boot-starter-web")
+    implementation ("org.springframework.boot:spring-boot-starter-validation")
     implementation ("org.springframework.boot:spring-boot-starter-actuator")
     implementation ("org.springframework.boot:spring-boot-starter-undertow")
     implementation ("org.springframework.boot:spring-boot-starter-test")
@@ -10,4 +11,8 @@ dependencies{
 
 configurations{
     implementation.exclude group: 'org.springframework.boot',module:'spring-boot-starter-tomcat'
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

@@ -6,6 +6,7 @@ import java.time.Instant;
 
 @Builder(toBuilder = true)
 public record Warehouse(
+        Long id,
         Long countryId,
         String iso2,
         String code,

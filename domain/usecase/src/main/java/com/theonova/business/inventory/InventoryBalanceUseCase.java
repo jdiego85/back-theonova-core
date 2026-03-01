@@ -23,8 +23,8 @@ public class InventoryBalanceUseCase {
         Warehouse warehouse = warehouseGateway.findByCode(inventoryBalance.codeWarehouse())
                 .orElseThrow(()-> new BusinessException(ErrorCode.INVALID_WAREHOUSE_CODE));
         InventoryBalance toSave = inventoryBalance.toBuilder()
-                .warehouse(warehouse)
-                .product(product)
+                .productId(product.id())
+                .warehouseId(warehouse.id())
                 .build();
         return inventoryBalanceGateway.saveItem(toSave);
     }
