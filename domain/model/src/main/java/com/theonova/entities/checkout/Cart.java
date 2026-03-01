@@ -1,16 +1,15 @@
 package com.theonova.entities.checkout;
 
 import com.theonova.enums.CartStatus;
+import lombok.Builder;
 
 import java.time.Instant;
 
+@Builder(toBuilder = true)
 public record Cart(
-        long id,
-        long userId,
+        Long id,
+        Long userId,
         CartStatus status,
         Instant lastActivityAt,
-        Instant abandonedAt,
-        Instant createdAt,
-        Instant updatedAt
-) {
-}
+        Instant abandonedAt
+) {}

@@ -2,21 +2,34 @@ package com.theonova.service.checkout;
 
 import com.theonova.entities.checkout.Cart;
 import com.theonova.gateways.checkout.CartGateway;
+import com.theonova.mappers.checkout.CartEntityMapper;
+import com.theonova.repository.checkout.CartRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CartServiceAdapter implements CartGateway {
+
+    private final CartRepository cartRepository;
+    private final CartEntityMapper cartEntityMapper;
+
     @Override
     public List<Cart> findByUserId(long userId) {
-        return List.of();
+        return cartRepository.findByUserId(userId)
+                .stream()
+                .map(cartEntityMapper::entityToDomain)
+                .toList();
     }
 
     @Override
     public Cart saveItem(Cart item) {
-        return null;
+        return cartEntityMapper.entityToDomain(
+                cartRepository.save(cartEntityMapper.domainToEntity(item))
+        );
     }
 
     @Override
@@ -26,7 +39,8 @@ public class CartServiceAdapter implements CartGateway {
 
     @Override
     public Optional<Cart> findById(Long id) {
-        return null;
+        return cartRepository.findById(id)
+                .map(cartEntityMapper::entityToDomain);
     }
 
     @Override

@@ -1,9 +1,11 @@
 package com.theonova.config;
 
 import com.theonova.business.catalog.*;
+import com.theonova.business.checkout.CartUseCase;
 import com.theonova.business.inventory.InventoryBalanceUseCase;
 import com.theonova.business.inventory.ReorderSettingUseCase;
 import com.theonova.gateways.catalog.*;
+import com.theonova.gateways.checkout.CartGateway;
 import com.theonova.gateways.inventory.InventoryBalanceGateway;
 import com.theonova.gateways.inventory.ReorderSettingsGateway;
 import com.theonova.service.CountryService;
@@ -61,5 +63,10 @@ public class UseCaseConfig {
     public ReorderSettingUseCase reorderSettingUseCase(ReorderSettingsGateway reorderSettingsGateway,
             ProductGateway productGateway, WarehouseGateway warehouseGateway) {
         return new ReorderSettingUseCase(reorderSettingsGateway, productGateway, warehouseGateway);
+    }
+
+    @Bean
+    public CartUseCase cartUseCase(CartGateway cartGateway) {
+        return new CartUseCase(cartGateway);
     }
 }
