@@ -30,7 +30,7 @@ public class OrderServiceAdapter implements OrderGateway {
     }
 
     @Override
-    public Order findById(Long id) {
+    public Optional<Order> findById(Long id) {
         return null;
     }
 

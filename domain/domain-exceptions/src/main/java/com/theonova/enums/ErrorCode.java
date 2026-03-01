@@ -14,6 +14,10 @@ public enum ErrorCode {
     INVALID_COUNTRY_CODE("CTR-003", "Invalid country ISO code"),
     COUNTRY_NOT_SUPPORTED("CTR-004","País no soportado"),
 
+    //BRAND
+    BRAND_NOT_FOUND("BRD-001", "Brand not found"),
+    INVALID_BRAND_ID("BRD-002", "Invalid brand ID"),
+
     // ORDER
     ORDER_NOT_FOUND("ORD-001", "Order not found"),
     ORDER_ALREADY_PAID("ORD-002", "Order already paid"),

@@ -1,10 +1,7 @@
 package com.theonova.service.catalog;
 
 import com.theonova.entities.catalog.Warehouse;
-import com.theonova.enums.ErrorCode;
-import com.theonova.exceptions.BusinessException;
 import com.theonova.gateways.catalog.WarehouseGateway;
-import com.theonova.mappers.CountryEntityMapper;
 import com.theonova.mappers.WarehouseEntityMapper;
 import com.theonova.repository.catalog.CountryRepository;
 import com.theonova.repository.catalog.WarehouseRepository;
@@ -46,7 +43,7 @@ public class WarehouseServiceAdapter implements WarehouseGateway {
     }
 
     @Override
-    public Warehouse findById(Long id) {
+    public Optional<Warehouse> findById(Long id) {
         return null;
     }
 

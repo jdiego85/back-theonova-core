@@ -1,10 +1,7 @@
 package com.theonova.config;
 
 import com.theonova.*;
-import com.theonova.gateways.catalog.BrandGateway;
-import com.theonova.gateways.catalog.CategoryGateway;
-import com.theonova.gateways.catalog.CountryGateway;
-import com.theonova.gateways.catalog.WarehouseGateway;
+import com.theonova.gateways.catalog.*;
 import com.theonova.repository.catalog.CategoryRepository;
 import com.theonova.service.CountryService;
 import org.springframework.context.annotation.Bean;
@@ -43,8 +40,9 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public ProductUseCase productUseCase() {
-        return new ProductUseCase();
+    public ProductUseCase productUseCase(ProductGateway productGateway,
+    BrandGateway brandGateway) {
+        return new ProductUseCase(productGateway, brandGateway);
     }
 
 

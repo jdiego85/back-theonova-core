@@ -5,6 +5,7 @@ import com.theonova.gateways.checkout.OrderStatusHistoryGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderStatusHistoryServiceAdapter implements OrderStatusHistoryGateway {
@@ -24,7 +25,7 @@ public class OrderStatusHistoryServiceAdapter implements OrderStatusHistoryGatew
     }
 
     @Override
-    public OrderStatusHistory findById(Long id) {
+    public Optional<OrderStatusHistory> findById(Long id) {
         return null;
     }
 

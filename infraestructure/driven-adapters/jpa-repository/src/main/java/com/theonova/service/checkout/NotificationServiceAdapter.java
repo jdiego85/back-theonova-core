@@ -5,6 +5,7 @@ import com.theonova.gateways.checkout.NotificationGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NotificationServiceAdapter implements NotificationGateway {
@@ -24,7 +25,7 @@ public class NotificationServiceAdapter implements NotificationGateway {
     }
 
     @Override
-    public Notification findById(Long id) {
+    public Optional<Notification> findById(Long id) {
         return null;
     }
 

@@ -1,18 +1,17 @@
 package com.theonova.response.catalog;
 
-import com.theonova.exceptions.dto.CommonDataOutput;
 import lombok.Builder;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
+@Getter
 @Builder
-public class ProductResponse  extends CommonDataOutput {
+public class ProductResponse  {
         String sku;
         String name;
         String description;
         BigDecimal price;
-        Long brandId;
-        boolean active;//is_active
         int minStock;
         int reorderPoint;
         int leadTimeDays;

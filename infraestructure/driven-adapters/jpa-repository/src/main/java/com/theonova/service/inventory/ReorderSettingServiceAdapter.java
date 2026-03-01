@@ -25,7 +25,7 @@ public class ReorderSettingServiceAdapter implements ReorderSettingsGateway {
     }
 
     @Override
-    public ReorderSetting findById(Long id) {
+    public Optional<ReorderSetting> findById(Long id) {
         return null;
     }
 

@@ -30,7 +30,7 @@ public class InventoryBalanceServiceAdapter implements InventoryBalanceGateway {
     }
 
     @Override
-    public InventoryBalance findById(Long id) {
+    public Optional<InventoryBalance> findById(Long id) {
         return null;
     }
 

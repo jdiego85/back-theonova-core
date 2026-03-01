@@ -36,8 +36,9 @@ public class BrandServiceAdapter implements BrandGateway {
     }
 
     @Override
-    public Brand findById(Long id) {
-        return null;
+    public Optional<Brand> findById(Long id) {
+        return brandRepository.findById(id)
+                .map(brandEntityMapper::mapperBrandEntityToDomain);
     }
 
     @Override

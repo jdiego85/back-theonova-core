@@ -37,7 +37,7 @@ public class CountryServiceAdapter implements CountryGateway {
     }
 
     @Override
-    public Country findById(Long id) {
+    public Optional<Country> findById(Long id) {
         return null;
     }
 

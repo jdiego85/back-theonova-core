@@ -36,7 +36,7 @@ public class CategoryServiceAdapter implements CategoryGateway {
     }
 
     @Override
-    public Category findById(Long id) {
+    public Optional<Category> findById(Long id) {
         return null;
     }
 

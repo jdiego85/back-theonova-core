@@ -5,6 +5,7 @@ import com.theonova.gateways.checkout.CartItemGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartItemServiceAdapter implements CartItemGateway {
@@ -29,7 +30,7 @@ public class CartItemServiceAdapter implements CartItemGateway {
     }
 
     @Override
-    public CartItem findById(Long id) {
+    public Optional<CartItem> findById(Long id) {
         return null;
     }
 

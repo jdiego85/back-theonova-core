@@ -5,6 +5,7 @@ import com.theonova.gateways.inventory.InventoryMovementGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InventoryMovementServiceAdapter implements InventoryMovementGateway {
@@ -29,7 +30,7 @@ public class InventoryMovementServiceAdapter implements InventoryMovementGateway
     }
 
     @Override
-    public InventoryMovement findById(Long id) {
+    public Optional<InventoryMovement> findById(Long id) {
         return null;
     }
 
