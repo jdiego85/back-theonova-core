@@ -31,24 +31,32 @@ public class InventoryBalanceServiceAdapter implements InventoryBalanceGateway {
 
     @Override
     public Optional<InventoryBalance> findByProductAndWarehouse(long productId, long warehouseId) {
-        return Optional.empty();
+        return inventoryBalanceRepository.findByProduct_IdAndWarehouse_Id(productId, warehouseId)
+                .map(mapper::entityToDomain);
     }
 
     @Override
+    @Transactional
     public Optional<InventoryBalance> lockByProductAndWarehouse(long productId, long warehouseId) {
-        return Optional.empty();
+        return inventoryBalanceRepository.lockByProductAndWarehouse(productId, warehouseId)
+                .map(mapper::entityToDomain);
     }
 
     @Override
     @Transactional
     public InventoryBalance saveItem(InventoryBalance item) {
-        InventoryBalanceEntity inventoryBalanceEntity = mapper.domainToEntity(item);
+        InventoryBalanceEntity inventoryBalanceEntity = item.id() == null
+                ? mapper.domainToEntity(item)
+                : inventoryBalanceRepository.findById(item.id())
+                .orElseThrow(() -> new BusinessException(ErrorCode.INTERNAL_ERROR));
 
         ProductEntity productRef = productRepository.getReferenceById(item.productId());
         WarehouseEntity warehouseRef = warehouseRepository.getReferenceById(item.warehouseId());
 
         inventoryBalanceEntity.setProduct(productRef);
         inventoryBalanceEntity.setWarehouse(warehouseRef);
+        inventoryBalanceEntity.setOnHand(item.onHand());
+        inventoryBalanceEntity.setReserved(item.reserved());
 
         InventoryBalanceEntity savedEntity = inventoryBalanceRepository.save(inventoryBalanceEntity);
         return mapper.entityToDomain(savedEntity);

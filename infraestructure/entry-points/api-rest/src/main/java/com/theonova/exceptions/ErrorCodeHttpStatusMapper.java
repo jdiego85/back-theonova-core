@@ -19,6 +19,7 @@ public final class ErrorCodeHttpStatusMapper {
             case COUNTRY_ALREADY_EXISTS, ORDER_ALREADY_PAID -> HttpStatus.CONFLICT;
             case INVALID_COUNTRY_CODE, COUNTRY_NOT_SUPPORTED, INVALID_BRAND_ID,
                     INVALID_CATEGORY_ID, INVALID_PRODUCT_ID, INVALID_WAREHOUSE_CODE -> HttpStatus.BAD_REQUEST;
+            case INSUFFICIENT_STOCK -> HttpStatus.CONFLICT;
 
             //BRAND
             case BRAND_NOT_FOUND -> HttpStatus.NOT_FOUND;

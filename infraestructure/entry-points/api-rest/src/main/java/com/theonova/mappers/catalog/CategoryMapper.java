@@ -1,9 +1,9 @@
 package com.theonova.mappers.catalog;
 
 import com.theonova.entities.catalog.Category;
-import com.theonova.request.catalog.CategoryRequest;
+import com.theonova.request.admin.CategoryRequest;
 import com.theonova.response.ApiResponseWrapper;
-import com.theonova.response.catalog.CategoryResponse;
+import com.theonova.response.admin.CategoryResponse;
 
 public class CategoryMapper {
 

@@ -1,9 +1,9 @@
 package com.theonova.mappers.inventory;
 
 import com.theonova.entities.inventory.ReorderSetting;
-import com.theonova.request.inventory.ReorderSettingRequest;
+import com.theonova.request.admin.ReorderSettingRequest;
 import com.theonova.response.ApiResponseWrapper;
-import com.theonova.response.inventory.ReorderSettingResponse;
+import com.theonova.response.admin.ReorderSettingResponse;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

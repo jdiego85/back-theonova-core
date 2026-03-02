@@ -9,8 +9,6 @@ import com.theonova.repository.catalog.ProductRepository;
 import com.theonova.repository.catalog.WarehouseRepository;
 import com.theonova.repository.checkout.CartItemRepository;
 import com.theonova.repository.checkout.CartRepository;
-import com.theonova.tables.catalog.ProductEntity;
-import com.theonova.tables.catalog.WarehouseEntity;
 import com.theonova.tables.checkout.CartItemEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +28,7 @@ public class CartItemServiceAdapter implements CartItemGateway {
     private final CartItemEntityMapper mapper;
 
     @Override
+    @Transactional(readOnly = true)
     public List<CartItem> findByCartId(long cartId) {
         return cartItemRepository.findByCart_Id(cartId).stream()
                 .map(mapper::entityToDomain)
@@ -45,8 +44,12 @@ public class CartItemServiceAdapter implements CartItemGateway {
     @Transactional
     public CartItem saveItem(CartItem item) {
 
-        CartItemEntity entityToSave = mapper.domainToEntity(item);
+        CartItemEntity entityToSave = item.id() == null
+                ? mapper.domainToEntity(item)
+                : cartItemRepository.findById(item.id())
+                .orElseThrow(() -> new BusinessException(ErrorCode.INTERNAL_ERROR));
 
+        entityToSave.setQuantity(item.quantity());
         entityToSave.setCart(cartRepository.getReferenceById(item.cartId()));
         entityToSave.setProduct(productRepository.getReferenceById(item.productId()));
         entityToSave.setWarehouse(warehouseRepository.getReferenceById(item.warehouseId()));
@@ -61,6 +64,7 @@ public class CartItemServiceAdapter implements CartItemGateway {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<CartItem> findById(Long id) {
         return cartItemRepository.findById(id)
                 .map(mapper::entityToDomain);

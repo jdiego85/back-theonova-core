@@ -1,11 +1,12 @@
 package com.theonova.controller.inventory;
 
-import com.theonova.business.inventory.InventoryBalanceUseCase;
+import com.theonova.business.admin.InventoryBalanceUseCase;
+import com.theonova.controller.admin.InventoryBalanceController;
 import com.theonova.entities.inventory.InventoryBalance;
 import com.theonova.exceptions.GlobalExceptionHandler;
 import com.theonova.mappers.inventory.InventoryBalanceMapper;
 import com.theonova.response.ApiResponseWrapper;
-import com.theonova.response.inventory.InventoryBalanceResponse;
+import com.theonova.response.admin.InventoryBalanceResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

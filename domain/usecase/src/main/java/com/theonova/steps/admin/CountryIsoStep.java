@@ -1,0 +1,12 @@
+package com.theonova.steps.admin;
+
+import com.theonova.entities.catalog.Country;
+import com.theonova.enums.CountryIso;
+
+public class CountryIsoStep {
+
+    public static String getCountryIso(Country country) {
+        if (country == null || country.name() == null) return null;
+        return CountryIso.fromName(country.name());
+    }
+}

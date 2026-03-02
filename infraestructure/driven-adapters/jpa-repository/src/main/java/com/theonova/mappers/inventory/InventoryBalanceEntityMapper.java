@@ -17,5 +17,7 @@ public interface InventoryBalanceEntityMapper {
 
     @Mapping(target = "skuProduct", source = "product.sku")
     @Mapping(target = "codeWarehouse", source = "warehouse.code")
+    @Mapping(target = "productId", source = "product.id")
+    @Mapping(target = "warehouseId", source = "warehouse.id")
     InventoryBalance entityToDomain(InventoryBalanceEntity inventoryBalanceEntity);
 }

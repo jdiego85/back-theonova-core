@@ -1,16 +1,14 @@
 package com.theonova.config;
 
-import com.theonova.business.catalog.*;
-import com.theonova.business.checkout.CartItemUseCase;
-import com.theonova.business.checkout.CartUseCase;
-import com.theonova.business.inventory.InventoryBalanceUseCase;
-import com.theonova.business.inventory.ReorderSettingUseCase;
+import com.theonova.business.runtime.CartItemUseCase;
+import com.theonova.business.runtime.CartUseCase;
+import com.theonova.business.admin.*;
 import com.theonova.gateways.catalog.*;
 import com.theonova.gateways.checkout.CartItemGateway;
 import com.theonova.gateways.checkout.CartGateway;
 import com.theonova.gateways.inventory.InventoryBalanceGateway;
 import com.theonova.gateways.inventory.ReorderSettingsGateway;
-import com.theonova.service.CountryService;
+import com.theonova.service.admin.CountryService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +28,7 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public WarehouseUseCase warehouseUseCase(WarehouseGateway warehouseGateway,CountryGateway countryGateway) {
+    public WarehouseUseCase warehouseUseCase(WarehouseGateway warehouseGateway, CountryGateway countryGateway) {
         return new WarehouseUseCase(warehouseGateway, countryGateway);
     }
 
@@ -50,14 +48,14 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public ProductCategoryUseCase  productCategoryUseCase(ProductCategoryGateway productCategoryGateway,
-            ProductGateway productGateway, CategoryGateway categoryGateway ) {
+    public ProductCategoryUseCase productCategoryUseCase(ProductCategoryGateway productCategoryGateway,
+                                                         ProductGateway productGateway, CategoryGateway categoryGateway ) {
         return new ProductCategoryUseCase( productCategoryGateway, productGateway, categoryGateway);
     }
 
     @Bean
     public InventoryBalanceUseCase inventoryBalanceUseCase(InventoryBalanceGateway inventoryBalanceGateway,
-        ProductGateway productGateway, WarehouseGateway warehouseGateway) {
+                                                           ProductGateway productGateway, WarehouseGateway warehouseGateway) {
         return new InventoryBalanceUseCase(inventoryBalanceGateway, productGateway, warehouseGateway);
     }
 

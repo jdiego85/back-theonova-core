@@ -1,9 +1,9 @@
 package com.theonova.mappers.inventory;
 
 import com.theonova.entities.inventory.InventoryBalance;
-import com.theonova.request.inventory.InventoryBalanceRequest;
+import com.theonova.request.admin.InventoryBalanceRequest;
 import com.theonova.response.ApiResponseWrapper;
-import com.theonova.response.inventory.InventoryBalanceResponse;
+import com.theonova.response.admin.InventoryBalanceResponse;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

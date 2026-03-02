@@ -19,6 +19,7 @@ public enum ErrorCode {
 
     //PRODUCT
     INVALID_PRODUCT_ID("PRD-001", "Invalid product id"),
+    INSUFFICIENT_STOCK("PRD-002", "Insufficient stock"),
 
     //BRAND
     BRAND_NOT_FOUND("BRD-001", "Brand not found"),
