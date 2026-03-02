@@ -1,14 +1,15 @@
 package com.theonova.entities.checkout;
 
-import java.time.Instant;
+import lombok.Builder;
 
+@Builder(toBuilder = true)
 public record CartItem(
-        long id,
-        long cartId,
-        long productId,
-        long warehouseId,
-        int quantity,
-        Instant createdAt,
-        Instant updatedAt
-) {
-}
+        Long id,
+        Long cartId,
+        Long productId,
+        Long warehouseId,
+        Long userId,
+        String skuProduct,
+        String codeWarehouse,
+        int quantity
+) {}
