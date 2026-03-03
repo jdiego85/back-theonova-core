@@ -75,8 +75,10 @@ public class UseCaseConfig {
 
     @Bean
     public CartItemUseCase cartItemUseCase(CartItemGateway cartItemGateway, CartGateway cartGateway,
-            ProductGateway productGateway, WarehouseGateway warehouseGateway) {
-        return new CartItemUseCase(cartItemGateway, cartGateway, productGateway, warehouseGateway);
+            ProductGateway productGateway, WarehouseGateway warehouseGateway,
+            InventoryBalanceGateway inventoryBalanceGateway, StockReservationGateway stockReservationGateway) {
+        return new CartItemUseCase(cartItemGateway, cartGateway, productGateway, warehouseGateway,
+                inventoryBalanceGateway, stockReservationGateway);
     }
 
     @Bean

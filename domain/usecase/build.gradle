@@ -3,3 +3,7 @@ dependencies {
     implementation project(":domain-exceptions")
     implementation("org.springframework:spring-tx")
 }
+
+tasks.test {
+    useJUnitPlatform()
+}

@@ -66,15 +66,7 @@ public class ReserveCartUseCase {
         InventoryBalance lockedBalance = inventoryBalanceGateway.lockByProductAndWarehouse(product.id(), warehouse.id())
                 .orElseThrow(() -> new BusinessException(ErrorCode.INSUFFICIENT_STOCK));
 
-        int reservationQuantity = cartItem.quantity();
-        int available = lockedBalance.onHand() - lockedBalance.reserved();
-        if (available < reservationQuantity) {
-            throw new BusinessException(ErrorCode.INSUFFICIENT_STOCK);
-        }
-
-        inventoryBalanceGateway.saveItem(lockedBalance.toBuilder()
-                .reserved(lockedBalance.reserved() + reservationQuantity)
-                .build());
+        int targetReservationQuantity = cartItem.quantity();
 
         Optional<StockReservation> existingReservation = stockReservationGateway.findByCartId(activeCart.id()).stream()
                 .filter(reservation -> Objects.equals(reservation.productId(), product.id())
@@ -82,24 +74,18 @@ public class ReserveCartUseCase {
                         && ReservationStatus.ACTIVE.equals(reservation.status()))
                 .findFirst();
 
+        int currentReservationQuantity = existingReservation.map(StockReservation::quantity).orElse(0);
+        int reservationDelta = targetReservationQuantity - currentReservationQuantity;
+        applyReservationDelta(lockedBalance, reservationDelta, product.id(), warehouse.id(), activeCart.id());
+
         stockReservationGateway.saveItem(StockReservation.builder()
                 .id(existingReservation.map(StockReservation::id).orElse(null))
                 .productId(product.id())
                 .warehouseId(warehouse.id())
                 .cartId(activeCart.id())
                 .orderId(null)
-                .quantity(reservationQuantity)
+                .quantity(targetReservationQuantity)
                 .status(ReservationStatus.ACTIVE)
-                .build());
-
-        inventoryMovementGateway.saveItem(InventoryMovement.builder()
-                .productId(product.id())
-                .warehouseId(warehouse.id())
-                .movementType(InventoryMovementType.RESERVE)
-                .quantity(reservationQuantity)
-                .refType(InventoryReferenceType.CART)
-                .refId(activeCart.id())
-                .note("Stock reserved from ReserveCartUseCase")
                 .build());
 
         return ReservedCart.builder()
@@ -108,10 +94,46 @@ public class ReserveCartUseCase {
                         ReservedItem.builder()
                                 .skuProduct(product.sku())
                                 .codeWarehouse(warehouse.code())
-                                .reservedQuantity(reservationQuantity)
+                                .reservedQuantity(targetReservationQuantity)
                                 .build()
                 ))
                 .expiresAt(LocalDateTime.now(GUAYAQUIL_ZONE).plusMinutes(30))
                 .build();
+    }
+
+    private void applyReservationDelta(InventoryBalance lockedBalance, int reservationDelta, Long productId,
+            Long warehouseId, Long cartId) {
+        if (reservationDelta == 0) {
+            return;
+        }
+
+        if (reservationDelta > 0) {
+            int available = lockedBalance.onHand() - lockedBalance.reserved();
+            if (available < reservationDelta) {
+                throw new BusinessException(ErrorCode.INSUFFICIENT_STOCK);
+            }
+        }
+
+        int nextReservedQuantity = lockedBalance.reserved() + reservationDelta;
+        if (nextReservedQuantity < 0) {
+            throw new BusinessException(ErrorCode.INTERNAL_ERROR);
+        }
+
+        inventoryBalanceGateway.saveItem(lockedBalance.toBuilder()
+                .reserved(nextReservedQuantity)
+                .build());
+
+        boolean isReserveMovement = reservationDelta > 0;
+        inventoryMovementGateway.saveItem(InventoryMovement.builder()
+                .productId(productId)
+                .warehouseId(warehouseId)
+                .movementType(isReserveMovement ? InventoryMovementType.RESERVE : InventoryMovementType.RELEASE)
+                .quantity(Math.abs(reservationDelta))
+                .refType(InventoryReferenceType.CART)
+                .refId(cartId)
+                .note(isReserveMovement
+                        ? "Stock reserved from ReserveCartUseCase"
+                        : "Stock released from ReserveCartUseCase")
+                .build());
     }
 }
