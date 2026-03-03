@@ -2,12 +2,15 @@ package com.theonova.config;
 
 import com.theonova.business.runtime.CartItemUseCase;
 import com.theonova.business.runtime.CartUseCase;
+import com.theonova.business.runtime.ReserveCartUseCase;
 import com.theonova.business.admin.*;
 import com.theonova.gateways.catalog.*;
 import com.theonova.gateways.checkout.CartItemGateway;
 import com.theonova.gateways.checkout.CartGateway;
 import com.theonova.gateways.inventory.InventoryBalanceGateway;
+import com.theonova.gateways.inventory.InventoryMovementGateway;
 import com.theonova.gateways.inventory.ReorderSettingsGateway;
+import com.theonova.gateways.inventory.StockReservationGateway;
 import com.theonova.service.admin.CountryService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -74,5 +77,13 @@ public class UseCaseConfig {
     public CartItemUseCase cartItemUseCase(CartItemGateway cartItemGateway, CartGateway cartGateway,
             ProductGateway productGateway, WarehouseGateway warehouseGateway) {
         return new CartItemUseCase(cartItemGateway, cartGateway, productGateway, warehouseGateway);
+    }
+
+    @Bean
+    public ReserveCartUseCase reserveCartUseCase(ProductGateway productGateway, WarehouseGateway warehouseGateway,
+            CartGateway cartGateway, CartItemGateway cartItemGateway, InventoryBalanceGateway inventoryBalanceGateway,
+            StockReservationGateway stockReservationGateway, InventoryMovementGateway inventoryMovementGateway) {
+        return new ReserveCartUseCase(productGateway, warehouseGateway, cartGateway, cartItemGateway,
+                inventoryBalanceGateway, stockReservationGateway, inventoryMovementGateway);
     }
 }
