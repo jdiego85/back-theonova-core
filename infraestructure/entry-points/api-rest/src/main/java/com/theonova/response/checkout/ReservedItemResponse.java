@@ -1,4 +1,4 @@
-package com.theonova.response.runtime;
+package com.theonova.response.checkout;
 
 import lombok.Builder;
 import lombok.Getter;

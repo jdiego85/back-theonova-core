@@ -1,12 +1,12 @@
-package com.theonova.controller.runtime;
+package com.theonova.controller.checkout;
 
-import com.theonova.business.runtime.ReserveCartUseCase;
-import com.theonova.entities.runtime.ReserveCart;
-import com.theonova.entities.runtime.ReservedCart;
-import com.theonova.mappers.runtime.ReserveCartMapper;
-import com.theonova.request.runtime.ReserveCartRequest;
+import com.theonova.business.checkout.ReserveCartUseCase;
+import com.theonova.entities.checkout.ReserveCart;
+import com.theonova.entities.checkout.ReservedCart;
+import com.theonova.mappers.checkout.ReserveCartMapper;
+import com.theonova.request.checkout.ReserveCartRequest;
 import com.theonova.response.ApiResponseWrapper;
-import com.theonova.response.runtime.ReserveCartResponse;
+import com.theonova.response.checkout.ReserveCartResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

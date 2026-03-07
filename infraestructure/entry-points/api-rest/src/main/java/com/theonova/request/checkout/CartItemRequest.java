@@ -1,4 +1,4 @@
-package com.theonova.request.runtime;
+package com.theonova.request.checkout;
 
 import com.theonova.exceptions.dto.CommonDataEntry;
 import jakarta.validation.constraints.NotBlank;

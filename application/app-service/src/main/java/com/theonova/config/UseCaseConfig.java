@@ -1,8 +1,8 @@
 package com.theonova.config;
 
-import com.theonova.business.runtime.CartItemUseCase;
-import com.theonova.business.runtime.CartUseCase;
-import com.theonova.business.runtime.ReserveCartUseCase;
+import com.theonova.business.checkout.CartItemUseCase;
+import com.theonova.business.checkout.CartUseCase;
+import com.theonova.business.checkout.ReserveCartUseCase;
 import com.theonova.business.checkout.OrderCheckoutUseCase;
 import com.theonova.business.admin.*;
 import com.theonova.gateways.catalog.*;

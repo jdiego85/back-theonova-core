@@ -1,4 +1,4 @@
-package com.theonova.entities.runtime;
+package com.theonova.entities.checkout;
 
 import lombok.Builder;
 

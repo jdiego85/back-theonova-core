@@ -9,7 +9,7 @@ public record PurchaseOrderItem(
         long productId,
         int quantityOrdered,
         int quantityReceived,
-        BigDecimal unitCost,
-        Instant createdAt
+        BigDecimal unitCost
+
 ) {
 }

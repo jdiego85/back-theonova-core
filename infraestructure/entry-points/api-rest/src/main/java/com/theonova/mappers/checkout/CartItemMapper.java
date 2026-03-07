@@ -1,9 +1,9 @@
 package com.theonova.mappers.checkout;
 
 import com.theonova.entities.checkout.CartItem;
-import com.theonova.request.runtime.CartItemRequest;
+import com.theonova.request.checkout.CartItemRequest;
 import com.theonova.response.ApiResponseWrapper;
-import com.theonova.response.runtime.CartItemResponse;
+import com.theonova.response.checkout.CartItemResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

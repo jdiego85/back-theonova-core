@@ -1,14 +1,14 @@
-package com.theonova.controller.runtime;
+package com.theonova.controller.checkout;
 
-import com.theonova.business.runtime.ReserveCartUseCase;
-import com.theonova.entities.runtime.ReserveCart;
-import com.theonova.entities.runtime.ReservedCart;
-import com.theonova.entities.runtime.ReservedItem;
+import com.theonova.business.checkout.ReserveCartUseCase;
+import com.theonova.entities.checkout.ReserveCart;
+import com.theonova.entities.checkout.ReservedCart;
+import com.theonova.entities.checkout.ReservedItem;
 import com.theonova.exceptions.GlobalExceptionHandler;
-import com.theonova.mappers.runtime.ReserveCartMapper;
+import com.theonova.mappers.checkout.ReserveCartMapper;
 import com.theonova.response.ApiResponseWrapper;
-import com.theonova.response.runtime.ReserveCartResponse;
-import com.theonova.response.runtime.ReservedItemResponse;
+import com.theonova.response.checkout.ReserveCartResponse;
+import com.theonova.response.checkout.ReservedItemResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

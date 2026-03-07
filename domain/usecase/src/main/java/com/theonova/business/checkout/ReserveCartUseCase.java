@@ -1,4 +1,4 @@
-package com.theonova.business.runtime;
+package com.theonova.business.checkout;
 
 import com.theonova.entities.catalog.Product;
 import com.theonova.entities.catalog.Warehouse;
@@ -7,9 +7,9 @@ import com.theonova.entities.checkout.CartItem;
 import com.theonova.entities.inventory.InventoryBalance;
 import com.theonova.entities.inventory.InventoryMovement;
 import com.theonova.entities.inventory.StockReservation;
-import com.theonova.entities.runtime.ReserveCart;
-import com.theonova.entities.runtime.ReservedCart;
-import com.theonova.entities.runtime.ReservedItem;
+import com.theonova.entities.checkout.ReserveCart;
+import com.theonova.entities.checkout.ReservedCart;
+import com.theonova.entities.checkout.ReservedItem;
 import com.theonova.enums.CartStatus;
 import com.theonova.enums.ErrorCode;
 import com.theonova.enums.InventoryMovementType;

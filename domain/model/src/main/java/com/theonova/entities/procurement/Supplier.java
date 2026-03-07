@@ -8,8 +8,7 @@ public record Supplier(
         String email,
         String phone,
         String taxId,
-        boolean active,
-        Instant createdAt,
-        Instant updatedAt
+        boolean active
+
 ) {
 }

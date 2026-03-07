@@ -14,8 +14,7 @@ public record PurchaseOrder(
         LocalDate orderDate,
         LocalDate expectedDate,
         LocalDate receivedDate,
-        BigDecimal totalCost,
-        Instant createdAt,
-        Instant updatedAt
+        BigDecimal totalCost
+
 ) {
 }
