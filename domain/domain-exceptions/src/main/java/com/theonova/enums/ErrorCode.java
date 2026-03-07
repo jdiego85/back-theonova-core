@@ -28,6 +28,11 @@ public enum ErrorCode {
     //WAREHOUSE
     INVALID_WAREHOUSE_CODE("WRH-001", "Invalid warehouse code"),
 
+    // CART
+    CART_NOT_FOUND("CRT-001", "Active cart not found"),
+    CART_EMPTY("CRT-002", "Cart has no items"),
+    CART_WAREHOUSE_MISMATCH("CRT-003", "Cart items belong to a different warehouse"),
+
     // ORDER
     ORDER_NOT_FOUND("ORD-001", "Order not found"),
     ORDER_ALREADY_PAID("ORD-002", "Order already paid"),

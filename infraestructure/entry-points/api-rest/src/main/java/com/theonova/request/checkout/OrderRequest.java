@@ -4,8 +4,12 @@ import com.theonova.exceptions.dto.CommonDataEntry;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.math.BigDecimal;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -28,6 +32,11 @@ public class OrderRequest extends CommonDataEntry {
     private String shippingAddress;
 
     @NotBlank(message = "currency is required")
+    @Size(min = 3, max = 3, message = "currency must have 3 characters")
     private String currency; // USD
-}
+
+    @PositiveOrZero(message = "shipping must be greater or equal than 0")
+    private BigDecimal shipping;
+
+    private String notes;
 }

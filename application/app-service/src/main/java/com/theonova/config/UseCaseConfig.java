@@ -3,15 +3,20 @@ package com.theonova.config;
 import com.theonova.business.runtime.CartItemUseCase;
 import com.theonova.business.runtime.CartUseCase;
 import com.theonova.business.runtime.ReserveCartUseCase;
+import com.theonova.business.checkout.OrderCheckoutUseCase;
 import com.theonova.business.admin.*;
 import com.theonova.gateways.catalog.*;
 import com.theonova.gateways.checkout.CartItemGateway;
 import com.theonova.gateways.checkout.CartGateway;
+import com.theonova.gateways.checkout.OrderGateway;
+import com.theonova.gateways.checkout.OrderItemGateway;
+import com.theonova.gateways.checkout.OrderStatusHistoryGateway;
 import com.theonova.gateways.inventory.InventoryBalanceGateway;
 import com.theonova.gateways.inventory.InventoryMovementGateway;
 import com.theonova.gateways.inventory.ReorderSettingsGateway;
 import com.theonova.gateways.inventory.StockReservationGateway;
 import com.theonova.service.admin.CountryService;
+import com.theonova.service.checkout.OrderCheckoutService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -87,5 +92,20 @@ public class UseCaseConfig {
             StockReservationGateway stockReservationGateway, InventoryMovementGateway inventoryMovementGateway) {
         return new ReserveCartUseCase(productGateway, warehouseGateway, cartGateway, cartItemGateway,
                 inventoryBalanceGateway, stockReservationGateway, inventoryMovementGateway);
+    }
+
+    @Bean
+    public OrderCheckoutService orderCheckoutService() {
+        return new OrderCheckoutService();
+    }
+
+    @Bean
+    public OrderCheckoutUseCase orderCheckoutUseCase(WarehouseGateway warehouseGateway, ProductGateway productGateway,
+            CartGateway cartGateway, CartItemGateway cartItemGateway, OrderGateway orderGateway,
+            OrderItemGateway orderItemGateway, OrderStatusHistoryGateway orderStatusHistoryGateway,
+            StockReservationGateway stockReservationGateway, OrderCheckoutService orderCheckoutService) {
+        return new OrderCheckoutUseCase(warehouseGateway, productGateway, cartGateway, cartItemGateway,
+                orderGateway, orderItemGateway, orderStatusHistoryGateway, stockReservationGateway,
+                orderCheckoutService);
     }
 }

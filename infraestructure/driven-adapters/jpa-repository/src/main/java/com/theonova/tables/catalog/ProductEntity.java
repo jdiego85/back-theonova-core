@@ -23,7 +23,7 @@ public class ProductEntity extends ConcurrencyEntity {
     private Long id;
 
     @Column(name = "sku", nullable = false, length = 64, unique = true)
-    @Comment("Stock keeping unit")
+    @Comment("Stock keeping unit: unique product reference")
     private String sku;
 
     @Column(name = "name", nullable = false, length = 180)
@@ -48,7 +48,7 @@ public class ProductEntity extends ConcurrencyEntity {
     private int minStock;
 
     @Column(name = "reorder_point", nullable = false)
-    @Comment("Reorder point")
+    @Comment("It is the amount of remaining stock. It indicates the exact moment when more product should be ordered, usually calculated as: (Average daily consumption / Days of Lead Time) + Safety stock.")
     private int reorderPoint;
 
     @Column(name = "lead_time_days", nullable = false)

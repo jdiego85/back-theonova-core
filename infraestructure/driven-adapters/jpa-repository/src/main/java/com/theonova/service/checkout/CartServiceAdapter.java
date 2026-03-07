@@ -1,11 +1,13 @@
 package com.theonova.service.checkout;
 
 import com.theonova.entities.checkout.Cart;
+import com.theonova.enums.CartStatus;
 import com.theonova.gateways.checkout.CartGateway;
 import com.theonova.mappers.checkout.CartEntityMapper;
 import com.theonova.repository.checkout.CartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +25,13 @@ public class CartServiceAdapter implements CartGateway {
                 .stream()
                 .map(cartEntityMapper::entityToDomain)
                 .toList();
+    }
+
+    @Override
+    @Transactional
+    public Optional<Cart> lockActiveByUserId(long userId) {
+        return cartRepository.findFirstByUserIdAndStatusOrderByIdDesc(userId, CartStatus.ACTIVE)
+                .map(cartEntityMapper::entityToDomain);
     }
 
     @Override

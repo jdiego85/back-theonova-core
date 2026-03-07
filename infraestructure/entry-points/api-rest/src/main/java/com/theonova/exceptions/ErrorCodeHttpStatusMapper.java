@@ -27,6 +27,10 @@ public final class ErrorCodeHttpStatusMapper {
             // ORDER
             case ORDER_NOT_FOUND -> HttpStatus.NOT_FOUND;
 
+            // CART
+            case CART_NOT_FOUND -> HttpStatus.NOT_FOUND;
+            case CART_EMPTY, CART_WAREHOUSE_MISMATCH -> HttpStatus.CONFLICT;
+
             // PAYMENT
             case PAYMENT_FAILED -> HttpStatus.BAD_REQUEST;
             case PAYMENT_TIMEOUT -> HttpStatus.GATEWAY_TIMEOUT;

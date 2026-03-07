@@ -1,7 +1,9 @@
 package com.theonova.controller.runtime;
 
+import com.theonova.business.checkout.OrderCheckoutUseCase;
 import com.theonova.entities.checkout.OrderCheckout;
-import com.theonova.entities.runtime.ReservedCart;
+import com.theonova.entities.checkout.OrderCheckoutResult;
+import com.theonova.mappers.checkout.OrderCheckoutMapper;
 import com.theonova.request.checkout.OrderRequest;
 import com.theonova.response.ApiResponseWrapper;
 import com.theonova.response.checkout.OrderResponse;
@@ -18,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OrderCheckoutController {
 
-    private final OrderUseCase orderUseCase;
-    private final OrderMapper mapper;
+    private final OrderCheckoutUseCase orderCheckoutUseCase;
+    private final OrderCheckoutMapper mapper;
 
     @PostMapping("create")
     public ResponseEntity<ApiResponseWrapper<OrderResponse>> checkout(@Valid @RequestBody OrderRequest orderRequest) {
         OrderCheckout toDomain = mapper.requestToDomain(orderRequest);
-        OrderCheckout response = orderUseCase.execute(toDomain);
+        OrderCheckoutResult response = orderCheckoutUseCase.execute(toDomain);
         ApiResponseWrapper<OrderResponse> wrapper = mapper.toResponseWrapper(response);
         return ResponseEntity.ok(wrapper);
     }

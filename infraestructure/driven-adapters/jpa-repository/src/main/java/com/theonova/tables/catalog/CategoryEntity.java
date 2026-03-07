@@ -31,7 +31,7 @@ public class CategoryEntity extends ConcurrencyEntity {
     private String name;
 
     @Column(name = "slug", nullable = false, length = 160)
-    @Comment("Category slug")
+    @Comment("A slug is the final part of the URL after the last backslash.")
     private String slug;
 
 
