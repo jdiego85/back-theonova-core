@@ -9,7 +9,6 @@ import com.theonova.entities.checkout.OrderCheckout;
 import com.theonova.entities.checkout.OrderCheckoutResult;
 import com.theonova.entities.checkout.OrderCheckoutResultItem;
 import com.theonova.entities.checkout.OrderItem;
-import com.theonova.entities.checkout.OrderStatusHistory;
 import com.theonova.entities.inventory.StockReservation;
 import com.theonova.enums.CartStatus;
 import com.theonova.enums.ErrorCode;
@@ -23,7 +22,6 @@ import com.theonova.gateways.checkout.CartGateway;
 import com.theonova.gateways.checkout.CartItemGateway;
 import com.theonova.gateways.checkout.OrderGateway;
 import com.theonova.gateways.checkout.OrderItemGateway;
-import com.theonova.gateways.checkout.OrderStatusHistoryGateway;
 import com.theonova.gateways.inventory.StockReservationGateway;
 import com.theonova.service.checkout.OrderCheckoutService;
 import lombok.RequiredArgsConstructor;
@@ -52,7 +50,6 @@ public class OrderCheckoutUseCase {
     private final CartItemGateway cartItemGateway;
     private final OrderGateway orderGateway;
     private final OrderItemGateway orderItemGateway;
-    private final OrderStatusHistoryGateway orderStatusHistoryGateway;
     private final StockReservationGateway stockReservationGateway;
     private final OrderCheckoutService orderCheckoutService;
 
@@ -121,15 +118,6 @@ public class OrderCheckoutUseCase {
                 createdOrder.notes(),
                 createdOrder.createdAt(),
                 createdOrder.updatedAt()
-        ));
-
-        orderStatusHistoryGateway.saveItem(new OrderStatusHistory(
-                0L,
-                finalizedOrder.id(),
-                null,
-                OrderStatus.PENDING,
-                checkout.userId(),
-                Instant.now()
         ));
 
         Instant now = Instant.now();

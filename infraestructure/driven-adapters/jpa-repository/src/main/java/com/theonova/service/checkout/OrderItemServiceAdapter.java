@@ -4,6 +4,7 @@ import com.theonova.entities.checkout.OrderItem;
 import com.theonova.enums.ErrorCode;
 import com.theonova.exceptions.BusinessException;
 import com.theonova.gateways.checkout.OrderItemGateway;
+import com.theonova.mappers.checkout.OrderItemEntityMapper;
 import com.theonova.repository.catalog.ProductRepository;
 import com.theonova.repository.checkout.OrderItemRepository;
 import com.theonova.repository.checkout.OrderRepository;
@@ -22,12 +23,13 @@ public class OrderItemServiceAdapter implements OrderItemGateway {
     private final OrderItemRepository orderItemRepository;
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final OrderItemEntityMapper mapper;
 
     @Override
     @Transactional(readOnly = true)
     public List<OrderItem> findByOrderId(long orderId) {
         return orderItemRepository.findByOrder_Id(orderId).stream()
-                .map(this::entityToDomain)
+                .map(mapper::entityToDomain)
                 .toList();
     }
 
@@ -35,7 +37,7 @@ public class OrderItemServiceAdapter implements OrderItemGateway {
     @Transactional(readOnly = true)
     public List<OrderItem> findByProductId(long productId) {
         return orderItemRepository.findByProduct_Id(productId).stream()
-                .map(this::entityToDomain)
+                .map(mapper::entityToDomain)
                 .toList();
     }
 
@@ -45,7 +47,7 @@ public class OrderItemServiceAdapter implements OrderItemGateway {
         OrderItemEntity entity = item.id() > 0
                 ? orderItemRepository.findById(item.id())
                 .orElseThrow(() -> new BusinessException(ErrorCode.INTERNAL_ERROR))
-                : new OrderItemEntity();
+                : mapper.domainToEntity(item);
 
         entity.setOrder(orderRepository.getReferenceById(item.orderId()));
         entity.setProduct(productRepository.getReferenceById(item.productId()));
@@ -53,7 +55,7 @@ public class OrderItemServiceAdapter implements OrderItemGateway {
         entity.setUnitPrice(item.unitPrice());
         entity.setLineTotal(item.lineTotal());
 
-        return entityToDomain(orderItemRepository.save(entity));
+        return mapper.entityToDomain(orderItemRepository.save(entity));
     }
 
     @Override
@@ -64,7 +66,7 @@ public class OrderItemServiceAdapter implements OrderItemGateway {
     @Override
     @Transactional(readOnly = true)
     public Optional<OrderItem> findById(Long id) {
-        return orderItemRepository.findById(id).map(this::entityToDomain);
+        return orderItemRepository.findById(id).map(mapper::entityToDomain);
     }
 
     @Override
@@ -75,17 +77,5 @@ public class OrderItemServiceAdapter implements OrderItemGateway {
     @Override
     public void removeItem(Long id) {
 
-    }
-
-    private OrderItem entityToDomain(OrderItemEntity entity) {
-        return new OrderItem(
-                entity.getId(),
-                entity.getOrder().getId(),
-                entity.getProduct().getId(),
-                entity.getQuantity(),
-                entity.getUnitPrice(),
-                entity.getLineTotal(),
-                entity.getCreatedAt()
-        );
     }
 }

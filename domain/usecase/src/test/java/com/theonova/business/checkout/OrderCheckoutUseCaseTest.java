@@ -19,7 +19,6 @@ import com.theonova.gateways.checkout.CartGateway;
 import com.theonova.gateways.checkout.CartItemGateway;
 import com.theonova.gateways.checkout.OrderGateway;
 import com.theonova.gateways.checkout.OrderItemGateway;
-import com.theonova.gateways.checkout.OrderStatusHistoryGateway;
 import com.theonova.gateways.inventory.StockReservationGateway;
 import com.theonova.service.checkout.OrderCheckoutService;
 import org.junit.jupiter.api.Test;
@@ -57,8 +56,6 @@ class OrderCheckoutUseCaseTest {
     private OrderGateway orderGateway;
     @Mock
     private OrderItemGateway orderItemGateway;
-    @Mock
-    private OrderStatusHistoryGateway orderStatusHistoryGateway;
     @Mock
     private StockReservationGateway stockReservationGateway;
 
@@ -124,7 +121,6 @@ class OrderCheckoutUseCaseTest {
         when(orderGateway.saveItem(any())).thenReturn(createdOrder, finalizedOrder);
         when(productGateway.findById(10L)).thenReturn(Optional.of(product));
         when(orderItemGateway.saveItem(any())).thenAnswer(invocation -> invocation.getArgument(0));
-        when(orderStatusHistoryGateway.saveItem(any())).thenAnswer(invocation -> invocation.getArgument(0));
         when(cartGateway.saveItem(any())).thenAnswer(invocation -> invocation.getArgument(0));
         when(stockReservationGateway.saveItem(any())).thenAnswer(invocation -> invocation.getArgument(0));
 

@@ -4,6 +4,7 @@ import com.theonova.entities.checkout.Order;
 import com.theonova.enums.ErrorCode;
 import com.theonova.exceptions.BusinessException;
 import com.theonova.gateways.checkout.OrderGateway;
+import com.theonova.mappers.checkout.OrderEntityMapper;
 import com.theonova.repository.catalog.WarehouseRepository;
 import com.theonova.repository.checkout.OrderRepository;
 import com.theonova.tables.checkout.OrderEntity;
@@ -20,19 +21,20 @@ public class OrderServiceAdapter implements OrderGateway {
 
     private final OrderRepository orderRepository;
     private final WarehouseRepository warehouseRepository;
+    private final OrderEntityMapper mapper;
 
     @Override
     @Transactional(readOnly = true)
     public Optional<Order> findByOrderNumber(String orderNumber) {
         return orderRepository.findByOrderNumber(orderNumber)
-                .map(this::entityToDomain);
+                .map(mapper::entityToDomain);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Order> findByUserId(long userId) {
         return orderRepository.findByUserId(userId).stream()
-                .map(this::entityToDomain)
+                .map(mapper::entityToDomain)
                 .toList();
     }
 
@@ -42,7 +44,7 @@ public class OrderServiceAdapter implements OrderGateway {
         OrderEntity entity = item.id() > 0
                 ? orderRepository.findById(item.id())
                 .orElseThrow(() -> new BusinessException(ErrorCode.INTERNAL_ERROR))
-                : new OrderEntity();
+                : mapper.domainToEntity(item);
 
         entity.setOrderNumber(item.orderNumber());
         entity.setUserId(item.userId());
@@ -58,7 +60,7 @@ public class OrderServiceAdapter implements OrderGateway {
         entity.setShippingAddress(item.shippingAddress());
         entity.setNotes(item.notes());
 
-        return entityToDomain(orderRepository.save(entity));
+        return mapper.entityToDomain(orderRepository.save(entity));
     }
 
     @Override
@@ -69,7 +71,7 @@ public class OrderServiceAdapter implements OrderGateway {
     @Override
     @Transactional(readOnly = true)
     public Optional<Order> findById(Long id) {
-        return orderRepository.findById(id).map(this::entityToDomain);
+        return orderRepository.findById(id).map(mapper::entityToDomain);
     }
 
     @Override
@@ -80,26 +82,5 @@ public class OrderServiceAdapter implements OrderGateway {
     @Override
     public void removeItem(Long id) {
 
-    }
-
-    private Order entityToDomain(OrderEntity entity) {
-        return new Order(
-                entity.getId(),
-                entity.getOrderNumber(),
-                entity.getUserId(),
-                entity.getWarehouse().getId(),
-                entity.getStatus(),
-                entity.getPaymentStatus(),
-                entity.getCurrency(),
-                entity.getSubtotal(),
-                entity.getShipping(),
-                entity.getTotal(),
-                entity.getShippingName(),
-                entity.getShippingPhone(),
-                entity.getShippingAddress(),
-                entity.getNotes(),
-                entity.getCreatedAt(),
-                entity.getUpdatedAt()
-        );
     }
 }

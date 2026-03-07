@@ -10,7 +10,6 @@ import com.theonova.gateways.checkout.CartItemGateway;
 import com.theonova.gateways.checkout.CartGateway;
 import com.theonova.gateways.checkout.OrderGateway;
 import com.theonova.gateways.checkout.OrderItemGateway;
-import com.theonova.gateways.checkout.OrderStatusHistoryGateway;
 import com.theonova.gateways.inventory.InventoryBalanceGateway;
 import com.theonova.gateways.inventory.InventoryMovementGateway;
 import com.theonova.gateways.inventory.ReorderSettingsGateway;
@@ -102,10 +101,9 @@ public class UseCaseConfig {
     @Bean
     public OrderCheckoutUseCase orderCheckoutUseCase(WarehouseGateway warehouseGateway, ProductGateway productGateway,
             CartGateway cartGateway, CartItemGateway cartItemGateway, OrderGateway orderGateway,
-            OrderItemGateway orderItemGateway, OrderStatusHistoryGateway orderStatusHistoryGateway,
-            StockReservationGateway stockReservationGateway, OrderCheckoutService orderCheckoutService) {
+            OrderItemGateway orderItemGateway, StockReservationGateway stockReservationGateway,
+            OrderCheckoutService orderCheckoutService) {
         return new OrderCheckoutUseCase(warehouseGateway, productGateway, cartGateway, cartItemGateway,
-                orderGateway, orderItemGateway, orderStatusHistoryGateway, stockReservationGateway,
-                orderCheckoutService);
+                orderGateway, orderItemGateway, stockReservationGateway, orderCheckoutService);
     }
 }
